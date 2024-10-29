@@ -1,0 +1,10 @@
+.custom-dropdown {
+    padding: 0 !important; /* Ensure padding is overridden */
+    background: none !important; /* Remove background */
+    border: none !important; /* Remove border */
+    color: #a8a9b4 !important; /* Set text color to red */
+}
+
+.custom-dropdown:hover {
+    color: #ffff !important; /* Set text color to red */
+}

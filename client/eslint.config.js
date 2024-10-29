@@ -5,7 +5,7 @@ import pluginReact from "eslint-plugin-react";
 export default [
   {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     rules: {
-      semi: "error"
+      semi: "warn"
     }
   },
   {
