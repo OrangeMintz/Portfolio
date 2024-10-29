@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+import Sidebar from '../components/Sidebar/Sidebar';
+import Footer from '../components/Footer/Footer';
 
 function About() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '/public/portfolio/assets/css/sidebar.css';
+import "./sidebar.css";
 
 function Sidebar() {
   return (
