@@ -1,44 +1,52 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar/Sidebar';
-import Footer from '../components/Footer/Footer';
 
 function About() {
   return (
     <>
-      <Sidebar />
       <main className="main">
-        <div id="about" className="about section">
-          <div className="container section-title" >
+        <section id="about" className="about section">
+          <div className="container section-title" data-aos="fade-up">
             <h2>About</h2>
             <p>
-              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
-              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
-              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-              Quia fugiat sit in iste officiis commodi quidem hic quas.
+              My name is Djeikuje Nickolai C. Gacus, and I am passionate about
+              web development, IoT, ethical hacking, and game development. I
+              have a keen interest in exploring the evolving landscape of
+              technology and pushing the boundaries of innovation. From a young
+              age, I was captivated by computer hardware and assembly. At 18,
+              with only a basic understanding from repairing our family
+              computer, I successfully built my first custom desktop, deepening
+              my technical skills and igniting my enthusiasm for complex
+              systems. My journey in tech has been a continuous learning
+              process, driven by curiosity and a commitment to mastering diverse
+              aspects of the field.
             </p>
           </div>
 
-          <div className="container" data-aos-delay="100">
+          <div className="container" data-aos="fade-up" data-aos-delay="100">
             <div className="row gy-4 justify-content-center">
               <div className="col-lg-4">
                 <img
-                  src="portfolio/assets/img/my-profile-img.jpg"
+                  src="portfolio/assets/img/Me.png"
                   className="img-fluid"
                   alt=""
                 />
               </div>
               <div className="col-lg-8 content">
-                <h2>UI/UX Designer &amp; Web Developer.</h2>
+                <h2>
+                  Full Stack Web Developer &amp; Computer System Specialist
+                </h2>
                 <p className="fst-italic py-3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  A full stack developer with a strong foundation in building
+                  web applications and hands-on experience assembling and
+                  optimizing desktop systems.
                 </p>
                 <div className="row">
                   <div className="col-lg-6">
                     <ul>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Birthday:</strong> <span>1 May 1995</span>
+                        <strong>Birthday:</strong>{" "}
+                        <span>10 September 2002</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
@@ -46,11 +54,12 @@ function About() {
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Phone:</strong> <span>+123 456 7890</span>
+                        <strong>Phone:</strong> <span>+63 960 6421 564</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>City:</strong> <span>New York, USA</span>
+                        <strong>City:</strong>{" "}
+                        <span>Valencia City, Philippines</span>
                       </li>
                     </ul>
                   </div>
@@ -58,71 +67,94 @@ function About() {
                     <ul>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Age:</strong> <span>30</span>
+                        <strong>Age:</strong> <span>22</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Degree:</strong> <span>Master</span>
+                        <strong>Degree:</strong> <span>BSIT</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Email:</strong> <span>email@example.com</span>
+                        <strong>Email:</strong>{" "}
+                        <span>nickzgacus@gmail.com</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Freelance:</strong> <span>Available</span>
+                        <strong>Status:</strong> <span>Available</span>
                       </li>
                     </ul>
                   </div>
                 </div>
                 <p className="py-3">
-                  Officiis eligendi itaque labore et dolorum mollitia officiis
-                  optio vero. Quisquam sunt adipisci omnis et ut. Nulla
-                  accusantium dolor incidunt officia tempore. Et eius omnis.
-                  Cupiditate ut dicta maxime officiis quidem quia. Sed et
-                  consectetur qui quia repellendus itaque neque.
+                  As a Full Stack Web Developer with a solid foundation in
+                  computer systems, I bring a diverse skill set that spans from web
+                  development, Internet of Things (IoT), ethical hacking and minor game development. 
+                  With a BSIT degree and hands-on experience, I’ve honed my
+                  ability to develop robust and secure applications while
+                  remaining curious about advancements in both software and
+                  hardware. Currently available for opportunities, I am eager to
+                  continue expanding my expertise in technology and innovation.
                 </p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <div id="stats" className="stats section">
-          <div className="container" >
+          <div className="container">
             <div className="row gy-4">
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
                   <i className="bi bi-emoji-smile"></i>
-                  <span data-purecounter-start="0" className="purecounter">232</span>
-                  <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                  <span data-purecounter-start="0" className="purecounter">
+                    15
+                  </span>
+                  <p>
+                    <strong>Finished Projects</strong>{" "}
+                    <span>consequuntur quae</span>
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
                   <i className="bi bi-journal-richtext"></i>
-                  <span data-purecounter-start="0" className="purecounter">521</span>
-                  <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                  <span data-purecounter-start="0" className="purecounter">
+                    2
+                  </span>
+                  <p>
+                    <strong>Ongoing Projects</strong>{" "}
+                    <span>adipisci atque cum quia aut</span>
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
                   <i className="bi bi-headset"></i>
-                  <span data-purecounter-start="0" className="purecounter">1453</span>
-                  <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+                  <span data-purecounter-start="0" className="purecounter">
+                   0
+                  </span>
+                  <p>
+                    <strong>Dropped Projects</strong>{" "}
+                    <span>aut commodi quaerat</span>
+                  </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
                   <i className="bi bi-people"></i>
-                  <span data-purecounter-start="0" className="purecounter">32</span>
-                  <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                  <span data-purecounter-start="0" className="purecounter">
+                    2
+                  </span>
+                  <p>
+                    <strong>Featured Projects</strong>{" "}
+                    <span>rerum asperiores dolor</span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 };

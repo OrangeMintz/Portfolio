@@ -648,6 +648,10 @@ section,
   line-height: 0;
 }
 
+.about p{
+  text-align: justify;
+}
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
@@ -775,6 +779,10 @@ section,
   top: 0;
   background: var(--background-color);
   border: 2px solid var(--accent-color);
+}
+
+.resume p{
+  text-align: justify;
 }
 
 /*--------------------------------------------------------------

@@ -8,12 +8,12 @@ function Footer() {
           <div className="copyright text-center ">
             <p>
               © <span>Copyright</span>{" "}
-              <strong className="px-1 sitename">iPortfolio</strong>{" "}
+              <strong className="px-1 sitename">OrangeMint</strong>{" "}
               <span>All Rights Reserved</span>
             </p>
           </div>
           <div className="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://github.com/OrangeMintz">OrangeMint</a>
           </div>
         </div>
       </footer>

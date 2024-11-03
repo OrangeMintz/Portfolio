@@ -11,7 +11,7 @@ function Sidebar() {
 
         <div className="profile-img">
           <img
-            src="portfolio/assets/img/profile.jpg"
+            src="portfolio/assets/img/profile.png"
             alt=""
             className="img-fluid rounded-circle"
           />
@@ -21,7 +21,7 @@ function Sidebar() {
           to="index.html"
           className="logo d-flex align-items-center justify-content-center"
         >
-          <h1 className="sitename">Alex Smith</h1>
+          <h1 className="sitename">D.N. Gacus</h1>
         </Link>
 
         <div className="social-links text-center">
@@ -45,36 +45,36 @@ function Sidebar() {
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
-              <Link to="/home" className="active">
+              <a href="#home" className="active">
                 <i className="bi bi-house navicon"></i>Home
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/about">
+              <a href="#about">
                 <i className="bi bi-person navicon"></i> About
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#resume">
+              <a href="#resume">
                 <i className="bi bi-file-earmark-text navicon"></i> Resume
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#portfolio">
+              <a href="#portfolio">
                 <i className="bi bi-images navicon"></i> Portfolio
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#services">
+              <a href="#services">
                 <i className="bi bi-hdd-stack navicon"></i> Services
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#contact">
+              <a href="#contact">
                 <i className="bi bi-envelope navicon"></i> Contact
-              </Link>
+              </a>
             </li>
-            
+
             <li className="dropdown">
               <Dropdown>
                 <Link to={"#"}>
