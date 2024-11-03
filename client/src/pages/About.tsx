@@ -48,7 +48,7 @@ function About() {
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Website:</strong> <span>www.example.com</span>
+                        <strong>Website:</strong> <span>https://orangemint-portfolio.vercel.app/</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
