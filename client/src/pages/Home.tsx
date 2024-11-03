@@ -6,6 +6,7 @@ import AOS from "aos";
 import { ReactTyped } from 'react-typed';
 import About from './About';
 import Resume from './Resume';
+import Services from './Services';
 
 
 
@@ -63,6 +64,8 @@ function Home() {
         <About />
 
         <Resume />
+
+        <Services/>
       </main>
 
       <Footer />
