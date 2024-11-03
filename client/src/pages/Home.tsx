@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Footer from '../components/Footer/Footer';
 import 'aos/dist/aos.css';
