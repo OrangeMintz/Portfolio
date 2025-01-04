@@ -60,12 +60,16 @@ function Home() {
             </p>
           </div>
         </section>
-
-        <About />
-
-        <Resume />
-
-        <Services/>
+        <div style={{ padding: "0px 10px" }}>
+          <About />
+          <Resume />
+          <Services />
+          <div className="WIP">
+            <div className="container">
+              <p>Work in Progress...</p>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />

@@ -48,7 +48,8 @@ function About() {
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Website:</strong> <span>https://orangemint-portfolio.vercel.app/</span>
+                        <strong>Website:</strong>{" "}
+                        <span>https://orangemint-portfolio.vercel.app/</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
@@ -85,13 +86,14 @@ function About() {
                 </div>
                 <p className="py-3">
                   As a Full Stack Web Developer with a solid foundation in
-                  computer systems, I bring a diverse skill set that spans from web
-                  development, Internet of Things (IoT), ethical hacking and minor game development. 
-                  With a BSIT degree and hands-on experience, I’ve honed my
-                  ability to develop robust and secure applications while
-                  remaining curious about advancements in both software and
-                  hardware. Currently available for opportunities, I am eager to
-                  continue expanding my expertise in technology and innovation.
+                  computer systems, I bring a diverse skill set that spans from
+                  web development, Internet of Things (IoT), ethical hacking and
+                  minor game development. With a BSIT degree and hands-on
+                  experience, I’ve honed my ability to develop robust and secure
+                  applications while remaining curious about advancements in
+                  both software and hardware. Currently available for
+                  opportunities, I am eager to continue expanding my expertise
+                  in technology and innovation.
                 </p>
               </div>
             </div>
@@ -103,49 +105,49 @@ function About() {
             <div className="row gy-4">
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
-                  <i className="bi bi-emoji-smile"></i>
+                  <i className="bi bi-check-circle"></i>
                   <span data-purecounter-start="0" className="purecounter">
                     15
                   </span>
                   <p>
-                    <strong>Finished Projects</strong>{" "}
-                    <span>consequuntur quae</span>
+                    <strong>Finished Projects</strong> <br></br>
+                    <span>Completed Works</span>
                   </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
-                  <i className="bi bi-journal-richtext"></i>
+                  <i className="bi bi-terminal"></i>
                   <span data-purecounter-start="0" className="purecounter">
                     2
                   </span>
                   <p>
-                    <strong>Ongoing Projects</strong>{" "}
-                    <span>adipisci atque cum quia aut</span>
+                    <strong>Ongoing Projects</strong> <br></br>
+                    <span>Work in Progress</span>
                   </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
-                  <i className="bi bi-headset"></i>
+                  <i className="bi bi-trash"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                   0
+                    0
                   </span>
                   <p>
-                    <strong>Dropped Projects</strong>{" "}
-                    <span>aut commodi quaerat</span>
+                    <strong>Dropped Projects</strong> <br></br>
+                    <span>Abandoned Works</span>
                   </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6">
                 <div className="stats-item">
-                  <i className="bi bi-people"></i>
+                  <i className="bi bi-heart"></i>
                   <span data-purecounter-start="0" className="purecounter">
                     2
                   </span>
                   <p>
-                    <strong>Featured Projects</strong>{" "}
-                    <span>rerum asperiores dolor</span>
+                    <strong>Featured Projects</strong> <br></br>
+                    <span>Highlighted Works</span>
                   </p>
                 </div>
               </div>

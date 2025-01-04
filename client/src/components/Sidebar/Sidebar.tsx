@@ -102,14 +102,16 @@ function Sidebar() {
                 <i className="bi bi-file-earmark-text navicon"></i> Resume
               </a>
             </li>
-            <li>
+
+            {/* <li>
               <a
                 href="#portfolio"
                 className={activeSection === "#portfolio" ? "active" : ""}
               >
                 <i className="bi bi-images navicon"></i> Portfolio
               </a>
-            </li>
+            </li> */}
+            
             <li>
               <a
                 href="#services"
@@ -118,6 +120,7 @@ function Sidebar() {
                 <i className="bi bi-hdd-stack navicon"></i> Services
               </a>
             </li>
+
             <li>
               <a
                 href="#contact"
@@ -127,7 +130,8 @@ function Sidebar() {
               </a>
             </li>
 
-            <li className="dropdown">
+            {/* Contact Dropdown */}
+            {/* <li className="dropdown">
               <Dropdown>
                 <Link to={"#"}>
                   <Dropdown.Toggle variant="dark" className="custom-dropdown">
@@ -146,7 +150,7 @@ function Sidebar() {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </header>
