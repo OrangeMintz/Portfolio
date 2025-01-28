@@ -49,7 +49,7 @@ function Sidebar() {
           to="index.html"
           className="logo d-flex align-items-center justify-content-center"
         >
-          <h1 className="sitename">D.N. Gacus</h1>
+          <h1 className="sitename">Djeikuje Nickolai</h1>
         </Link>
 
         <div className="social-links text-center">
@@ -111,7 +111,7 @@ function Sidebar() {
                 <i className="bi bi-images navicon"></i> Portfolio
               </a>
             </li> */}
-            
+
             <li>
               <a
                 href="#services"
@@ -126,7 +126,15 @@ function Sidebar() {
                 href="#contact"
                 className={activeSection === "#contact" ? "active" : ""}
               >
-                <i className="bi bi-envelope navicon"></i> Contact
+                <i className="bi bi-envelope navicon"></i> Contacts
+              </a>
+            </li>
+            <li>
+              <a
+                href="#projects"
+                className={activeSection === "#projects" ? "active" : ""}
+              >
+                <i className="bi bi-stack navicon"></i> Projects
               </a>
             </li>
 

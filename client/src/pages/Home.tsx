@@ -7,6 +7,7 @@ import { ReactTyped } from 'react-typed';
 import About from './About';
 import Resume from './Resume';
 import Services from './Services';
+import Contacts from './Contacts';
 
 
 
@@ -64,14 +65,14 @@ function Home() {
           <About />
           <Resume />
           <Services />
+          <Contacts />
           <div className="WIP">
             <div className="container">
-              <p>Work in Progress...</p>
+              <p>WORK IN PROGRESS...</p>
             </div>
           </div>
         </div>
       </main>
-
       <Footer />
     </>
   );
