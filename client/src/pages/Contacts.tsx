@@ -102,7 +102,7 @@ function Contacts() {
                     />
                   </div>
 
-                  <div className="col-md-12">
+                  <div className="col-md-12" >
                     <label className="pb-2">Message</label>
                     <textarea
                       className="form-control"

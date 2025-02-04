@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 
 //ROUTES's
-import post from './routes/postRoute.js'
+import mail from './routes/mailRoute.js'
 
 //Module Setup
 const app = express()
@@ -14,6 +14,16 @@ app.use(express.json());
 // Credentials
 const Port = process.env.PORT
 const Mongodb = process.env.MONGODb
+const FrontEnd = process.env.FRONTEND
+
+// CORS Setup
+const corsOptions = {
+    origin: [FrontEnd],
+    optionsSuccessStatus: 200,
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 
 // Connection to MongodDB
 const connect = async() =>{
@@ -33,10 +43,11 @@ mongoose.connection.on('disconnected', () =>{
 })
 
 //API's
-app.use('/api/post', post);
+app.use('/contact', mail);
+
 
 // Establishing Connection
 app.listen(Port, () =>{
     connect()
-    console.log(`Connecting to ${Port}`)
+    console.log(`Connected to ${Port}`)
 })

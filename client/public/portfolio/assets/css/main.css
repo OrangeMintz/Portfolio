@@ -10,12 +10,14 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
-
+/* CUSTOM CSS START*/
 .WIP {
 text-align: center;
 text-transform: uppercase;
 font-weight: bold;
 }
+
+/* CUSTOM CSS END */
 
 /* Fonts */
 :root {
@@ -1127,6 +1129,7 @@ section,
   box-shadow: none;
   border-radius: 0;
   color: var(--default-color);
+  resize: none;
   background-color: var(--surface-color);
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
