@@ -1,31 +1,32 @@
 import mongoose from 'mongoose'
-const {Schema} = mongoose
+const { Schema } = mongoose
 
 const mailSchema = new Schema({
-    Subject:{
+
+    subject: {
         type: String,
         required: true
     },
 
-    Name:[{
+    name: {
         type: String,
-    }],
+    },
 
-    email:[{
-        type: String,
-        required: true
-    }],
-
-    message:[{
+    email: {
         type: String,
         required: true
-    }],
+    },
 
-    date:{
+    message: {
+        type: String,
+        required: true
+    },
+
+    date: {
         type: String
     },
 
-    }, { timestamps: true }
+}, { timestamps: true }
 )
 
 const mailModel = mongoose.model('Mail', mailSchema);
