@@ -48,7 +48,7 @@ const postMail = async (req, res) => {
 
         const mailOptions = {
             // from: email,
-            from: `"${name} via OrangeMintz Portfolio" <${process.env.EMAIL_USER}>`,
+            from: `${name}`,
             to: process.env.EMAIL_USER,
             subject: `[Portfolio Email] ${subject}`,
             html: htmlContent
