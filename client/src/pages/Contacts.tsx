@@ -1,4 +1,44 @@
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 function Contacts() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/contact`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      setStatus("sent");
+      toast.success(response.data.message || "Message sent successfully!");
+      console.log("Success:", response.data);
+    } catch (error: any) {
+      setStatus("error");
+      toast.error(error?.response?.data?.error || "Failed to send message.");
+      console.error("Error:", error);
+    }
+  };
   return (
     <>
       <section id="contact" className="contact section">
@@ -6,7 +46,7 @@ function Contacts() {
           <h2>Contact</h2>
           <p>
             Get in touch for inquiries, collaborations, or more information.
-            Feel free to reach out for assistance or further details.
+            Feel free to reach me out for assistance or further details.
           </p>
         </div>
 
@@ -61,21 +101,16 @@ function Contacts() {
             </div>
 
             <div className="col-lg-7">
-              <form
-                action="forms/contact.php"
-                method="post"
-                className="php-email-form"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
+              <form className="php-email-form" onSubmit={handleSubmit}>
                 <div className="row gy-4">
                   <div className="col-md-6">
                     <label className="pb-2">Your Name</label>
                     <input
                       type="text"
                       name="name"
-                      id="name-field"
                       className="form-control"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -84,9 +119,10 @@ function Contacts() {
                     <label className="pb-2">Your Email</label>
                     <input
                       type="email"
-                      className="form-control"
                       name="email"
-                      id="email-field"
+                      className="form-control"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -95,30 +131,40 @@ function Contacts() {
                     <label className="pb-2">Subject</label>
                     <input
                       type="text"
-                      className="form-control"
                       name="subject"
-                      id="subject-field"
+                      className="form-control"
+                      value={formData.subject}
+                      onChange={handleChange}
                       required
                     />
                   </div>
 
-                  <div className="col-md-12" >
+                  <div className="col-md-12">
                     <label className="pb-2">Message</label>
                     <textarea
-                      className="form-control"
                       name="message"
                       rows={10}
-                      id="message-field"
+                      className="form-control"
+                      value={formData.message}
+                      onChange={handleChange}
                       required
                     ></textarea>
                   </div>
 
                   <div className="col-md-12 text-center">
-                    <div className="loading">Loading</div>
-                    <div className="error-message"></div>
-                    <div className="sent-message">
-                      Your message has been sent. Thank you!
-                    </div>
+                    {status === "loading" && (
+                      <div className="loading">Sending...</div>
+                    )}
+                    {status === "error" && (
+                      <div className="error-message">
+                        Failed to send message.
+                      </div>
+                    )}
+                    {status === "sent" && (
+                      <div className="sent-message">
+                        Your message has been sent. Thank you!
+                      </div>
+                    )}
                     <button type="submit">Send Message</button>
                   </div>
                 </div>
@@ -131,4 +177,4 @@ function Contacts() {
   );
 }
 
-export default Contacts
+export default Contacts;

@@ -49,7 +49,7 @@ const postMail = async (req, res) => {
         const mailOptions = {
             // from: email,
             from: `${name}`,
-            to: process.env.EMAIL_USER,
+            to: process.env.EMAIL_TO,
             subject: `[Portfolio Email] ${subject}`,
             html: htmlContent
         };

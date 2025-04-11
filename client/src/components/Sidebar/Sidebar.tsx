@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 // import { Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 function Sidebar() {
-
   const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
