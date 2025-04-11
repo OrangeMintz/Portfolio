@@ -1,0 +1,14 @@
+/* Hide Toastify section when there are no toasts */
+.Toastify:empty {
+  display: none !important;
+}
+
+/* Ensure background doesn't bleed */
+.Toastify {
+  background: transparent !important;
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  pointer-events: none; /* Prevent accidental interactions */
+}
