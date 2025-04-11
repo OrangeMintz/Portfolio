@@ -8,19 +8,16 @@ import "tailwindcss";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { RouterProvider } from "react-router-dom";
-import Preloader from "./components/Preloader/Preloader";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // TESTING PRELOADER
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setLoading(false), 1500);
-  //   return () => clearTimeout(timer);
-  // }, []);
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 300);
-    return () => clearTimeout(timeout);
+    const preloader = document.getElementById("preloader");
+    if (preloader) preloader.style.display = "none";
+
+    const timer = setTimeout(() => setLoading(false), 300);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -33,7 +30,7 @@ function App() {
         theme="light"
         transition={Slide}
       />
-      {loading ? <Preloader /> : <RouterProvider router={router} />}
+      <RouterProvider router={router} />
     </>
   );
 }
