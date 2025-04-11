@@ -19,7 +19,8 @@ function App() {
   //   return () => clearTimeout(timer);
   // }, []);
   useEffect(() => {
-    setLoading(false);
+    const timeout = setTimeout(() => setLoading(false), 300);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
