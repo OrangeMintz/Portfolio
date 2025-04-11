@@ -1,5 +1,5 @@
 import { ToastContainer, Slide } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import router from "./router";
 import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
