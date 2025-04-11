@@ -17,6 +17,10 @@ const postMail = async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
 
+        // Simple validation
+        if (!name || !email || !subject || !message) {
+            return res.status(400).json({ error: "All fields (name, email, subject, message) are required." });
+        }
         // Format date
         const now = new Date();
         const options = {

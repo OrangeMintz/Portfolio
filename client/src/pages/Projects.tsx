@@ -14,9 +14,16 @@ const Projects = () => {
   return (
     <>
       <Sidebar />
-      <div>
-        <main className="main">Hello World</main>
-      </div>
+      <main className="main">
+        <section className="section">
+          <div className="container">
+            <h2 className=" text-center">WORK IN PROGRESS</h2>
+            <p className=" text-center">
+              This page is still under construction.
+            </p>
+          </div>
+        </section>
+      </main>
       <Footer />
     </>
   );

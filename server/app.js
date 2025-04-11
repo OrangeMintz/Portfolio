@@ -23,13 +23,16 @@ const corsOptions = {
     credentials: true
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: process.env.FRONTEND,
+    credentials: true
+}));
 
 // Connection to MongodDB
-const connect = async() =>{
-    try{
+const connect = async () => {
+    try {
         mongoose.connect(Mongodb)
-    }catch(error){
+    } catch (error) {
         console.log("Connecting to MongoDB")
     }
 }
@@ -38,16 +41,16 @@ mongoose.connection.on('connected', () => {
     console.log("Connected to MongoDB")
 })
 
-mongoose.connection.on('disconnected', () =>{
+mongoose.connection.on('disconnected', () => {
     console.log("Disconnected to MongoDB")
 })
 
 //API's
-app.use('/contact', mail);
+app.use('/mail', mail);
 
 
 // Establishing Connection
-app.listen(Port, () =>{
+app.listen(Port, () => {
     connect()
     console.log(`Connected to ${Port}`)
 })

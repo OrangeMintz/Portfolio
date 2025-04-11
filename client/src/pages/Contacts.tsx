@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Contacts() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ function Contacts() {
   });
 
   const [status, setStatus] = useState("");
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -18,13 +21,23 @@ function Contacts() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCaptchaChange = (value: string | null) => {
+    setCaptchaVerified(!!value);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!captchaVerified) {
+      toast.error("Please complete the CAPTCHA before sending.");
+      return;
+    }
+
     setStatus("loading");
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/contact`,
+        `${import.meta.env.VITE_BACKEND_URL}/mail`,
         formData,
         {
           withCredentials: true,
@@ -40,6 +53,8 @@ function Contacts() {
         subject: "",
         message: "",
       });
+      recaptchaRef.current?.reset();
+      setCaptchaVerified(false);
     } catch (error: any) {
       setStatus("error");
       toast.error(error?.response?.data?.error || "Failed to send message.");
@@ -158,6 +173,14 @@ function Contacts() {
                     ></textarea>
                   </div>
 
+                  <div className="mt-4 d-flex justify-content-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                      onChange={handleCaptchaChange}
+                    />
+                  </div>
+
                   <div className="col-md-12 text-center">
                     {status === "loading" && (
                       <div className="loading">Sending...</div>
@@ -172,7 +195,12 @@ function Contacts() {
                         Your message has been sent. Thank you!
                       </div>
                     )}
-                    <button type="submit">Send Message</button>
+                    <button
+                      type="submit"
+                      disabled={!captchaVerified || status === "loading"}
+                    >
+                      {status === "loading" ? "Sending..." : "Send Message"}
+                    </button>
                   </div>
                 </div>
               </form>
