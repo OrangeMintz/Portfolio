@@ -8,7 +8,6 @@ import About from "./About";
 import Resume from "./Resume";
 import Services from "./Services";
 import Contacts from "./Contacts";
-import Projects from "./Projects";
 
 function Home() {
   useEffect(() => {

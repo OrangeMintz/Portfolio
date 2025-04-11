@@ -76,10 +76,6 @@ export const generateEmailTemplate = ({ name, email, subject, message, date }) =
                                                 <a href="mailto:${email}"
                                                     style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none; text-decoration: underline; color: #333333;">${email}</a>.
                                             </p>
-                                            <p
-                                                style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; line-height: 21px; color: #333333; font-size: 14px;">
-                                                Sincerely,<br>Djeikuje Nickolai C. Gacus
-                                            </p>
                                         </div>
                                     </td>
                                 </tr>
