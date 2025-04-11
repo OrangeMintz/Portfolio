@@ -130,7 +130,7 @@ function Sidebar() {
             </li>
             <li>
               <a
-                href="#projects"
+                href="projects"
                 className={activeSection === "#projects" ? "active" : ""}
               >
                 <i className="bi bi-stack navicon"></i> Projects

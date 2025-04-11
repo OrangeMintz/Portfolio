@@ -33,6 +33,13 @@ function Contacts() {
       setStatus("sent");
       toast.success(response.data.message || "Message sent successfully!");
       console.log("Success:", response.data);
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch (error: any) {
       setStatus("error");
       toast.error(error?.response?.data?.error || "Failed to send message.");
