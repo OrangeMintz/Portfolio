@@ -10,13 +10,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { RouterProvider } from "react-router-dom";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const preloader = document.getElementById("preloader");
-    if (preloader) preloader.style.display = "none";
+    const timer = setTimeout(() => {
+      const preloader = document.getElementById("preloader");
+      if (preloader) preloader.style.display = "none";
+      // PRELOADER DELAY 300ms
+    }, 300);
 
-    const timer = setTimeout(() => setLoading(false), 300);
     return () => clearTimeout(timer);
   }, []);
 
