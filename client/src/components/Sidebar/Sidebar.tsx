@@ -116,12 +116,12 @@ function Sidebar() {
             </a>
           </li>
           <li>
-            <Link
-              to="/projects"
+            <a
+              href="/projects"
               className={isActive("/projects") ? "active" : ""}
             >
               <i className="bi bi-stack navicon"></i> Projects
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
