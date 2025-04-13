@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import router from "./router";
 import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
+import "./index.css";
 import "tailwindcss";
 // import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
