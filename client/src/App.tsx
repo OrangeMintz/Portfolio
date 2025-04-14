@@ -6,16 +6,17 @@ import "./toast.css";
 import "./index.css";
 import "tailwindcss";
 // import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { RouterProvider } from "react-router-dom";
+
+import { AuthProvider } from "./context/FirebaseContext";
 
 function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       const preloader = document.getElementById("preloader");
       if (preloader) preloader.style.display = "none";
-      // PRELOADER DELAY 300ms
     }, 300);
 
     return () => clearTimeout(timer);
@@ -31,7 +32,10 @@ function App() {
         theme="light"
         transition={Slide}
       />
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </>
   );
 }

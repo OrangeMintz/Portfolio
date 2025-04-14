@@ -92,12 +92,12 @@ function Sidebar() {
           >
             <i className="bi bi-discord"></i>
           </Link>
-          <Link to="https://github.com/OrangeMintz" className="github">
+          <Link to="https://github.com/OrangeMintz" className="github ">
             <i className="bi bi-github"></i>
           </Link>
         </div>
 
-        <nav id="navmenu" className="navmenu">
+        <nav id="navmenu" className="navmenu ">
           <ul>
             <li>
               <a href="/#home" className={isActive("#home") ? "active" : ""}>
