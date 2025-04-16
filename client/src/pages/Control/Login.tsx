@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleGitHubLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, githubProvider);
+      await signInWithPopup(auth, githubProvider);
       toast.success("Hello World");
       navigate("/control");
     } catch (error: any) {
