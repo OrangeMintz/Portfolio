@@ -1,14 +1,16 @@
-/* Hide Toastify section when there are no toasts */
+/* Hide empty Toastify container to prevent layout issues */
 .Toastify:empty {
   display: none !important;
 }
 
-/* Ensure background doesn't bleed */
+/* Toastify root container styling */
 .Toastify {
-  background: transparent !important;
   position: fixed !important;
   top: 0;
   right: 0;
+  width: auto;
+  height: auto;
   z-index: 9999;
-  pointer-events: none; /* Prevent accidental interactions */
+  pointer-events: auto !important; /* <- allow interaction */
+  background: transparent !important;
 }

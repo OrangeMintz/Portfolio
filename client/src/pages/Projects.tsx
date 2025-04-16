@@ -8,7 +8,6 @@ const Projects = () => {
     AOS.init({
       disable: "phone",
       duration: 700,
-      // easing: "ease-out-cubic",
     });
   }, []);
   return (

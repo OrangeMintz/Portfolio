@@ -6,7 +6,7 @@ import {
   GithubAuthProvider,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth, googleProvider, githubProvider } from "../../context/firebase";
+import { auth, googleProvider, githubProvider } from "../../config/firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -46,8 +46,10 @@ const Login = () => {
       await signInWithPopup(auth, provider);
       toast.success("Successfully signed in!");
       navigate("/control");
-    } catch {
-      toast.error("This account is not authorized for this site");
+    } catch (err: any) {
+      toast.error(
+        err.message || "This account is not authorized for this site"
+      );
     } finally {
       loadingSetter(false);
     }
@@ -62,7 +64,7 @@ const Login = () => {
       await sendPasswordResetEmail(auth, email);
       toast.success("Password reset email sent!");
     } catch (err: any) {
-      toast.error(err.message || "Failed to send reset email.");
+      toast.error("Failed to send reset email.");
     }
   };
 
@@ -76,6 +78,14 @@ const Login = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="text-sm mb-2 text-right">
+            <a
+              onClick={() => navigate(-1)}
+              className="font-medium text-[#149ddd] hover:text-[#1290ca] cursor-pointer"
+            >
+              Back
+            </a>
+          </div>
           <form className="space-y-6" onSubmit={handleLogin}>
             <div>
               <label

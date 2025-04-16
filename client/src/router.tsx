@@ -11,17 +11,6 @@ const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/projects", element: <Projects /> },
   { path: "/control/login", element: <Login /> },
-
-  // ✅ Protected Routes
-  // {
-  //   path: "/projects",
-  //   element: (
-  //     <RequireAuth>
-  //       <Projects />
-  //     </RequireAuth>
-  //   ),
-  // },
-
   {
     path: "/control",
     element: (

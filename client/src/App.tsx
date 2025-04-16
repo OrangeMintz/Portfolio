@@ -1,9 +1,9 @@
 import { ToastContainer, Slide } from "react-toastify";
 import { useEffect } from "react";
 import router from "./router";
-import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 import "tailwindcss";
 // import "bootstrap/dist/css/bootstrap.min.css"
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -20,7 +20,7 @@ function App() {
     const timer = setTimeout(() => {
       const preloader = document.getElementById("preloader");
       if (preloader) preloader.style.display = "none";
-    }, 300);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,7 +38,11 @@ function App() {
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
-        closeOnClick={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
         theme="light"
         transition={Slide}
       />

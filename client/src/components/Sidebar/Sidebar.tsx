@@ -59,13 +59,13 @@ function Sidebar() {
       >
         {/* <i className="header-toggle d-xl-none bi bi-list"></i> */}
         <div className="profile-img">
-          <Link to="/control">
+          <a href="/control">
             <img
               src="portfolio/assets/img/profile.png"
               alt=""
               className="img-fluid rounded-circle"
             />
-          </Link>
+          </a>
         </div>
 
         <Link
