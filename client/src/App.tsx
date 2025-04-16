@@ -20,7 +20,7 @@ function App() {
     const timer = setTimeout(() => {
       const preloader = document.getElementById("preloader");
       if (preloader) preloader.style.display = "none";
-    }, 100);
+    }, 250);
 
     return () => clearTimeout(timer);
   }, []);
