@@ -12,6 +12,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [githubLoading, setGithubLoading] = useState(false);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -27,13 +29,18 @@ const Login = () => {
   };
 
   const handleGitHubLogin = async () => {
+    if (githubLoading) return; // Prevent duplicate calls
+    setGithubLoading(true);
     try {
       await signInWithPopup(auth, githubProvider);
-      toast.success("Hello World");
+      toast.success("Signed in with GitHub!");
       navigate("/control");
     } catch (error: any) {
-      console.error("GitHub OAuth Error:", error);
-      toast.error(error.message || "GitHub sign-in failed.");
+      if (error.code !== "auth/cancelled-popup-request") {
+        toast.error(error.message || "GitHub sign-in failed.");
+      }
+    } finally {
+      setGithubLoading(false);
     }
   };
 
@@ -118,6 +125,7 @@ const Login = () => {
               <div>
                 <button
                   onClick={handleGitHubLogin}
+                  disabled={githubLoading}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   <img
