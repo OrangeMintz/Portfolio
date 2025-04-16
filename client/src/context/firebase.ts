@@ -1,7 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
-import { getAuth, GithubAuthProvider } from "firebase/auth"; // <-- import provider
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
@@ -15,9 +15,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 export const auth = getAuth(app);
+export const googleProvider = new GoogleAuthProvider();
 export const githubProvider = new GithubAuthProvider();
-githubProvider.setCustomParameters({
-  allow_signup: "false",
-});
+// const analytics = getAnalytics(app);

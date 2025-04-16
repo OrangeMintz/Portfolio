@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, githubProvider } from "../../context/firebase";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+import { auth, googleProvider, githubProvider } from "../../context/firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-// OAUTH
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +16,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // OAUTH
   const [githubLoading, setGithubLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,33 +28,49 @@ const Login = () => {
       toast.success("Successfully signed in!");
       navigate("/control");
     } catch (err: any) {
-      toast.error(err.message || "Failed to login.");
+      toast.error("Incorrect Email or Password");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleGitHubLogin = async () => {
-    if (githubLoading) return; // Prevent duplicate calls
-    setGithubLoading(true);
+  const handleOAuthLogin = async (
+    provider: GoogleAuthProvider | GithubAuthProvider
+  ) => {
+    const loadingSetter =
+      provider instanceof GoogleAuthProvider
+        ? setGoogleLoading
+        : setGithubLoading;
+    loadingSetter(true);
     try {
-      await signInWithPopup(auth, githubProvider);
-      toast.success("Signed in with GitHub!");
+      await signInWithPopup(auth, provider);
+      toast.success("Successfully signed in!");
       navigate("/control");
-    } catch (error: any) {
-      if (error.code !== "auth/cancelled-popup-request") {
-        toast.error(error.message || "GitHub sign-in failed.");
-      }
+    } catch {
+      toast.error("This account is not authorized for this site");
     } finally {
-      setGithubLoading(false);
+      loadingSetter(false);
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    if (!email) {
+      toast.error("Please enter your email first.");
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Password reset email sent!");
+    } catch (err: any) {
+      toast.error(err.message || "Failed to send reset email.");
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Sign in to your Admin Account
+        <h2 className="mt-6 text-center text-3xl text-gray-900">
+          Sign in to your account
         </h2>
       </div>
 
@@ -70,7 +92,7 @@ const Login = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#149ddd] focus:border-[#149ddd] sm:text-sm"
                   placeholder="Enter your email address"
                 />
               </div>
@@ -97,11 +119,22 @@ const Login = () => {
               </div>
             </div>
 
+            <div className="flex justify-end text-right">
+              <div className="text-sm">
+                <a
+                  className="font-medium text-[#149ddd] hover:text-[#1290ca] cursor-pointer"
+                  onClick={handlePasswordReset}
+                >
+                  Forgot your password?
+                </a>
+              </div>
+            </div>
+
             <div>
               <button
                 type="submit"
                 disabled={loading}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#149ddd] hover:bg-[#1290ca]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1290ca] duration-150"
               >
                 {loading ? "Signing in..." : "Sign in"}
               </button>
@@ -124,8 +157,8 @@ const Login = () => {
             <div className="mt-6 flex gap-3 justify-center text-center">
               <div>
                 <button
-                  onClick={handleGitHubLogin}
                   disabled={githubLoading}
+                  onClick={() => handleOAuthLogin(githubProvider)}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   <img
@@ -136,16 +169,17 @@ const Login = () => {
                 </button>
               </div>
               <div>
-                <a
-                  href="#"
+                <button
+                  disabled={googleLoading}
+                  onClick={() => handleOAuthLogin(googleProvider)}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   <img
                     className="h-6 w-6"
                     src="https://www.svgrepo.com/show/506498/google.svg"
-                    alt=""
+                    alt="Google"
                   />
-                </a>
+                </button>
               </div>
             </div>
           </div>
