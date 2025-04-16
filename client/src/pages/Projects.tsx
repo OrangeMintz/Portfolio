@@ -24,10 +24,14 @@ const Projects = () => {
           </div>
         </section>
 
-        <div className="flex justify-center">
+        <div
+          className="flex justify-center"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
+              <a href="/control">
                 <img
                   className="rounded-t-lg"
                   src="portfolio/assets/img/logo.png"

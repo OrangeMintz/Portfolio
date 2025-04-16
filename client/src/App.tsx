@@ -8,8 +8,11 @@ import "tailwindcss";
 // import "bootstrap/dist/css/bootstrap.min.css"
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import { RouterProvider } from "react-router-dom";
+// AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
 
+import { RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/FirebaseContext";
 
 function App() {
@@ -20,6 +23,13 @@ function App() {
     }, 300);
 
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 700,
+    });
   }, []);
 
   return (

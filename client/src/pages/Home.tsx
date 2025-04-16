@@ -1,8 +1,6 @@
-import { useEffect } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import "aos/dist/aos.css";
-import AOS from "aos";
 import { ReactTyped } from "react-typed";
 import About from "./About";
 import Resume from "./Resume";
@@ -10,14 +8,6 @@ import Services from "./Services";
 import Contacts from "./Contacts";
 
 function Home() {
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      duration: 700,
-      // easing: "ease-out-cubic",
-    });
-  }, []);
-
   return (
     <>
       <Sidebar />

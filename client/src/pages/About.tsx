@@ -100,7 +100,8 @@ function About() {
           </div>
         </section>
 
-        <div id="stats" className="stats section">
+        {/* <div id="stats" className="stats section"> */}
+        <div id="stats" className="stats section" data-aos="fade-up">
           <div className="container">
             <div className="row gy-4">
               <div className="col-lg-3 col-md-6">
@@ -157,6 +158,6 @@ function About() {
       </main>
     </>
   );
-};
+}
 
 export default About;

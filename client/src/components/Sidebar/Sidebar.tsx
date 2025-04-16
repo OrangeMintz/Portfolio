@@ -59,18 +59,22 @@ function Sidebar() {
       >
         {/* <i className="header-toggle d-xl-none bi bi-list"></i> */}
         <div className="profile-img">
-          <img
-            src="portfolio/assets/img/profile.png"
-            alt=""
-            className="img-fluid rounded-circle"
-          />
+          <Link to="/control">
+            <img
+              src="portfolio/assets/img/profile.png"
+              alt=""
+              className="img-fluid rounded-circle"
+            />
+          </Link>
         </div>
 
         <Link
           to="/"
           className="logo d-flex align-items-center justify-content-center"
         >
-          <h1 className="sitename">Djeikuje Nickolai</h1>
+          <h1 className="sitename text-center" style={{ fontSize: "23px" }}>
+            Djeikuje Nickolai Gacus
+          </h1>
         </Link>
 
         <div className="social-links text-center">
