@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../context/firebase";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, githubProvider } from "../../context/firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+// OAUTH
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Successfully signed in!");
-      navigate("/control"); // change path as needed
+      navigate("/control");
     } catch (err: any) {
       toast.error(err.message || "Failed to login.");
     } finally {
@@ -24,11 +26,22 @@ const Login = () => {
     }
   };
 
+  const handleGitHubLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, githubProvider);
+      toast.success("Hello World");
+      navigate("/control");
+    } catch (error: any) {
+      console.error("GitHub OAuth Error:", error);
+      toast.error(error.message || "GitHub sign-in failed.");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Sign in to your account
+          Sign in to your Admin Account
         </h2>
       </div>
 
@@ -101,30 +114,18 @@ const Login = () => {
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className="mt-6 flex gap-3 justify-center text-center">
               <div>
-                <a
-                  href="#"
+                <button
+                  onClick={handleGitHubLogin}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   <img
                     className="h-5 w-5"
-                    src="https://www.svgrepo.com/show/512120/facebook-176.svg"
-                    alt=""
+                    src="https://www.svgrepo.com/show/512317/github-142.svg"
+                    alt="GitHub"
                   />
-                </a>
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                >
-                  <img
-                    className="h-5 w-5"
-                    src="https://www.svgrepo.com/show/513008/twitter-154.svg"
-                    alt=""
-                  />
-                </a>
+                </button>
               </div>
               <div>
                 <a
