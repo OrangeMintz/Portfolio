@@ -1,4 +1,6 @@
+import Footer from "../../components/Footer/Footer";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import "aos/dist/aos.css";
 
 const AddProj = () => {
   return (
@@ -7,7 +9,7 @@ const AddProj = () => {
       <main className="main">
         <section className="section">
           <div className="px-5 md:px-8">
-            <div className=" mt-2 mb-5 ">
+            <div className=" mt-2 mb-5" data-aos="fade-up" data-aos-delay="100">
               <h2 className="text-2xl font-semibold mb-1">Project</h2>
               <p className="text-gray-600">
                 Add new or existing project on your library.
@@ -17,7 +19,7 @@ const AddProj = () => {
             <div>
               <form>
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="name"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -33,7 +35,7 @@ const AddProj = () => {
                       placeholder="Portfolio-OrangeMint"
                     />
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="category"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -55,7 +57,7 @@ const AddProj = () => {
                       <option value="tools/utilities">Tools/Utilities</option>
                     </select>
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="repository"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -71,7 +73,7 @@ const AddProj = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="date"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -85,7 +87,7 @@ const AddProj = () => {
                       required
                     />
                   </div>
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="status"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -108,7 +110,7 @@ const AddProj = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div data-aos="fade-up" data-aos-delay="100">
                     <label
                       htmlFor="image"
                       className="block mb-2 text-sm font-medium text-gray-900"
@@ -127,7 +129,7 @@ const AddProj = () => {
                   </div>
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-6" data-aos="fade-up" data-aos-delay="100">
                   <label
                     htmlFor="sub_heading"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -144,7 +146,7 @@ const AddProj = () => {
                   />
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-6" data-aos="fade-up" data-aos-delay="100">
                   <label
                     htmlFor="description"
                     className="block mb-2 text-sm font-medium text-gray-900"
@@ -159,7 +161,11 @@ const AddProj = () => {
                   />
                 </div>
 
-                <div className="flex justify-end">
+                <div
+                  className="flex justify-end"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                >
                   <button
                     type="submit"
                     className="text-white bg-[#149ddd] hover:bg-[#1290ca]   focus:ring-4 focus:outline-none focus:ring-[#1290ca] font-medium text-sm w-full sm:w-auto px-[18px] py-2.5 text-center duration-150"
@@ -173,6 +179,7 @@ const AddProj = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 };

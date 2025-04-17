@@ -1,15 +1,7 @@
-import { useEffect } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import "aos/dist/aos.css";
-import AOS from "aos";
 const Projects = () => {
-  useEffect(() => {
-    AOS.init({
-      disable: "phone",
-      duration: 700,
-    });
-  }, []);
   return (
     <>
       <Sidebar />
@@ -23,13 +15,13 @@ const Projects = () => {
           </div>
         </section>
 
-        <div
-          className="flex justify-center px-5 md:px-8"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
+        <div className="flex justify-center px-5 md:px-8">
           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <div
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <a href="/control">
                 <img
                   className="rounded-t-lg"
@@ -71,7 +63,11 @@ const Projects = () => {
               </div>
             </div>
 
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <div
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <a href="#">
                 <img
                   className="rounded-t-lg"
@@ -113,7 +109,11 @@ const Projects = () => {
               </div>
             </div>
 
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+            <div
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <a href="/control">
                 <img
                   className="rounded-t-lg"

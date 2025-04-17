@@ -1,9 +1,7 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Footer from "../../components/Footer/Footer";
-
 import { useEffect, useState } from "react";
 import "aos/dist/aos.css";
-import AOS from "aos";
 
 const Index = () => {
   const [commit, setCommit] = useState<{ sha: string; date: string } | null>(
@@ -11,13 +9,6 @@ const Index = () => {
   );
 
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      disable: "phone",
-      duration: 700,
-    });
-
-    // Fetch latest commit
     fetch("https://api.github.com/repos/OrangeMintz/Portfolio/commits")
       .then((res) => res.json())
       .then((data) => {
@@ -37,12 +28,12 @@ const Index = () => {
       <main className="main">
         <section className="section">
           <div className="px-5 md:px-8">
-            <div
-              className="w-full px-5 md:px-8 flex justify-center"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="w-full max-w-6xl flex flex-col items-center text-center gap-4">
+            <div className="w-full px-5 md:px-8 flex justify-center">
+              <div
+                className="w-full max-w-6xl flex flex-col items-center text-center gap-4"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
                 <img src="portfolio/assets/img/chad.webp" width={100} alt="" />
                 <div className="flex flex-col items-center">
                   <h1>Welcome</h1>
@@ -78,13 +69,13 @@ const Index = () => {
             </div>
 
             {/* Cards Section */}
-            <div
-              className="mt-10 flex justify-center"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
+            <div className="mt-10 flex justify-center">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <a href="/control/project">
+                <a
+                  href="/control/project"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                >
                   <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
                     <div className="flex items-center gap-4">
                       <i className="fa-solid fa-diagram-project text-gray-700 text-xl"></i>
@@ -93,7 +84,7 @@ const Index = () => {
                   </div>
                 </a>
 
-                <a href="">
+                <a href="" data-aos="fade-up" data-aos-delay="100">
                   <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
                     <div className="flex items-center gap-4">
                       <i className="fa-solid fa-certificate text-gray-700 text-xl"></i>
@@ -104,7 +95,7 @@ const Index = () => {
                   </div>
                 </a>
 
-                <a href="">
+                <a href="" data-aos="fade-up" data-aos-delay="100">
                   <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
                     <div className="flex items-center gap-4">
                       <i className="fa-solid fa-blog text-gray-700 text-xl"></i>
