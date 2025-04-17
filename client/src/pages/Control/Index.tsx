@@ -1,31 +1,34 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../../config/firebase";
-import { useAuth } from "../../context/FirebaseContext";
 import Sidebar from "../../components/Sidebar/Sidebar";
-
-import { useEffect } from "react";
-import "aos/dist/aos.css";
-import AOS from "aos";
 import Footer from "../../components/Footer/Footer";
 
-const Index = () => {
-  const { user } = useAuth();
+import { useEffect, useState } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      console.log("User logged out");
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
-  };
+const Index = () => {
+  const [commit, setCommit] = useState<{ sha: string; date: string } | null>(
+    null
+  );
 
   useEffect(() => {
+    // Initialize AOS
     AOS.init({
       disable: "phone",
       duration: 700,
-      // easing: "ease-out-cubic",
     });
+
+    // Fetch latest commit
+    fetch("https://api.github.com/repos/OrangeMintz/Portfolio/commits")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          const latest = data[0];
+          const sha = latest.sha.slice(0, 7);
+          const date = new Date(latest.commit.author.date).toLocaleDateString();
+          setCommit({ sha, date });
+        }
+      })
+      .catch((err) => console.error("Error fetching commit:", err));
   }, []);
 
   return (
@@ -33,19 +36,83 @@ const Index = () => {
       <Sidebar />
       <main className="main">
         <section className="section">
-          <div className="container">
+          <div className="px-5 md:px-8">
             <div
-              className="text-center mt-10"
+              className="w-full px-5 md:px-8 flex justify-center"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <p className="text-lg mb-4">Email: {user?.email}</p>
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                Logout
-              </button>
+              <div className="w-full max-w-6xl flex flex-col items-center text-center gap-4">
+                <img src="portfolio/assets/img/chad.webp" width={100} alt="" />
+                <div className="flex flex-col items-center">
+                  <h1>Welcome</h1>
+                  <p className="text-lg">
+                    You're viewing in the{" "}
+                    <span className="text-blue-400 text-lg">
+                      <a href="/control">Control Panel</a>
+                    </span>
+                  </p>
+                  <p>
+                    Project Commit:{" "}
+                    {commit ? (
+                      <span className="inline-flex flex-col sm:flex-row gap-1 sm:gap-2 items-center justify-center">
+                        <span className="text-green-700 font-mono">
+                          {commit.sha}
+                        </span>
+                        <span>Date: {commit.date}</span>
+                      </span>
+                    ) : (
+                      "Loading..."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="my-10" data-aos="fade-up" data-aos-delay="100">
+              <h3>Quick Access</h3>
+              <p className="text-md text-justify">
+                This page serves as the control panel for managing quick access
+                configurations and dynamic content across the site.
+              </p>
+            </div>
+
+            {/* Cards Section */}
+            <div
+              className="mt-10 flex justify-center"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <a href="/control/projects">
+                  <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div className="flex items-center gap-4">
+                      <i className="fa-solid fa-diagram-project text-gray-700 text-xl"></i>
+                      <span className="text-lg text-gray-800">Projects</span>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="">
+                  <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div className="flex items-center gap-4">
+                      <i className="fa-solid fa-certificate text-gray-700 text-xl"></i>
+                      <span className="text-lg text-gray-800">
+                        Certificates
+                      </span>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="">
+                  <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
+                    <div className="flex items-center gap-4">
+                      <i className="fa-solid fa-blog text-gray-700 text-xl"></i>
+                      <span className="text-lg text-gray-800">Blogs</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </section>

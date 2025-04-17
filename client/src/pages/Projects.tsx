@@ -24,7 +24,7 @@ const Projects = () => {
         </section>
 
         <div
-          className="flex justify-center"
+          className="flex justify-center px-5 md:px-8"
           data-aos="fade-up"
           data-aos-delay="100"
         >
@@ -70,6 +70,7 @@ const Projects = () => {
                 </a>
               </div>
             </div>
+
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img
@@ -111,8 +112,9 @@ const Projects = () => {
                 </a>
               </div>
             </div>
+
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
+              <a href="/control">
                 <img
                   className="rounded-t-lg"
                   src="portfolio/assets/img/logo.png"

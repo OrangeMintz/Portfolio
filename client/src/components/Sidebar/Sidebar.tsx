@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { onAuthStateChanged, User } from "firebase/auth";
+
 import "./sidebar.css";
+
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
 
 function Sidebar() {
   const location = useLocation();
@@ -43,6 +48,26 @@ function Sidebar() {
     }
     return isHome && currentHash === idOrPath;
   };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log("Logged out");
+      // optionally redirect or show toast
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+
+    return () => unsubscribe(); // cleanup listener on unmount
+  }, []);
 
   return (
     <>
@@ -146,6 +171,25 @@ function Sidebar() {
               </a>
             </li>
           </ul>
+
+          {currentUser && (
+            <ul className="mt-3 px-2">
+              <li className="flex items-center justify-between text-sm text-gray-300">
+                <span className="truncate max-w-[150px]">
+                  {currentUser.email ||
+                    currentUser.providerData[0]?.email ||
+                    currentUser.displayName ||
+                    currentUser.providerData[0]?.displayName}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="text-red-400 hover:text-red-600 text-xs ml-2"
+                >
+                  Log out
+                </button>
+              </li>
+            </ul>
+          )}
         </nav>
       </header>
     </>
