@@ -6,6 +6,7 @@ import Index from "./pages/Control/Index";
 
 // AUTHENTICATION
 import RequireAuth from "./context/RequireAuth";
+import AddProj from "./pages/Control/AddProj";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -16,6 +17,14 @@ const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <Index />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/control/project",
+    element: (
+      <RequireAuth>
+        <AddProj />
       </RequireAuth>
     ),
   },

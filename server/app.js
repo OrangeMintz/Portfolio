@@ -5,6 +5,8 @@ import cors from 'cors'
 
 //ROUTES's
 import mail from './routes/mailRoute.js'
+import project from './routes/projectsRoute.js'
+
 
 //Module Setup
 const app = express()
@@ -47,6 +49,8 @@ mongoose.connection.on('disconnected', () => {
 
 //API's
 app.use('/mail', mail);
+app.use('/control/project', project);
+
 
 
 // Establishing Connection

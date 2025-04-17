@@ -3,10 +3,42 @@ const { Schema } = mongoose
 
 const projectSchema = new Schema({
 
-    subject: {
+    name: {
         type: String,
         required: true
     },
+
+    category: {
+        type: String,
+        required: true
+    },
+
+    repository: {
+        type: String,
+    },
+
+    status: {
+        type: String,
+        required: true
+    },
+
+    date: {
+        type: Date,
+        required: true
+    },
+
+    subheading: {
+        type: String,
+    },
+
+    description: {
+        type: String,
+    },
+
+    images: {
+        type: [String],
+        required: true
+    }
 
 }, { timestamps: true }
 )

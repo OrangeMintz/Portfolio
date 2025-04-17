@@ -84,7 +84,7 @@ const Index = () => {
               data-aos-delay="100"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <a href="/control/projects">
+                <a href="/control/project">
                   <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
                     <div className="flex items-center gap-4">
                       <i className="fa-solid fa-diagram-project text-gray-700 text-xl"></i>

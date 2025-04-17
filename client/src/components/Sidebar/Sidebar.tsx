@@ -82,11 +82,10 @@ function Sidebar() {
           isSidebarOpen ? "show-sidebar" : "hide-sidebar"
         }`}
       >
-        {/* <i className="header-toggle d-xl-none bi bi-list"></i> */}
         <div className="profile-img">
           <a href="/control">
             <img
-              src="portfolio/assets/img/profile.png"
+              src="/portfolio/assets/img/profile.png"
               alt=""
               className="img-fluid rounded-circle"
             />
