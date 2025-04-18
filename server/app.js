@@ -19,14 +19,10 @@ const Mongodb = process.env.MONGODb
 const FrontEnd = process.env.FRONTEND
 
 // CORS Setup
-const corsOptions = {
-    origin: [FrontEnd],
-    optionsSuccessStatus: 200,
-    credentials: true
-};
 
 app.use(cors({
-    origin: process.env.FRONTEND,
+    origin: FrontEnd,
+    optionsSuccessStatus: 200,
     credentials: true
 }));
 
@@ -48,8 +44,8 @@ mongoose.connection.on('disconnected', () => {
 })
 
 //API's
-app.use('/mail', mail);
-app.use('/control/project', project);
+app.use('/api/mail', mail);
+app.use('/api/control/project', project);
 
 
 

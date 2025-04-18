@@ -1,13 +1,18 @@
 import express from 'express'
+import dotenv from 'dotenv'
+
 import { deleteProject, getProjects, postProject, updateProject } from '../controller/projectsController.js'
 const router = express.Router()
+dotenv.config();
 
-router.get('/', getProjects);
+const project = process.env.PROJECT
 
-router.post('/', postProject);
+router.get(`/${project}`, getProjects);
 
-router.delete('/:id', deleteProject)
+router.post(`/${project}`, postProject);
 
-router.put('/:id', updateProject)
+router.delete(`/${project}:id`, deleteProject)
+
+router.put(`/${project}:id`, updateProject)
 
 export default router

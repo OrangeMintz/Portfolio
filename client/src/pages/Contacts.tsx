@@ -37,7 +37,7 @@ function Contacts() {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/mail`,
+        `${import.meta.env.VITE_BACKEND_URL}/${import.meta.env.VITE_API_MAIL}`,
         formData,
         {
           withCredentials: true,
