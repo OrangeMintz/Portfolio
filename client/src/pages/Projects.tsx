@@ -20,6 +20,7 @@ type Project = {
 const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -33,6 +34,7 @@ const Projects = () => {
       .catch((err) => {
         console.error("Failed to fetch projects:", err);
         setLoading(false);
+        setError(true);
       });
   }, []);
 
@@ -55,7 +57,13 @@ const Projects = () => {
             <div className="flex justify-center px-4 md:px-8">
               {loading ? (
                 <div className="flex items-center justify-center h-[60vh]">
-                  <p className="text-gray-600 text-2xl">Loading...</p>
+                  <p className="text-gray-600 text-3xl">Loading...</p>
+                </div>
+              ) : error ? (
+                <div className="flex items-center justify-center h-[60vh]">
+                  <p className="text-red-500 text-2xl">
+                    Failed to load projects.
+                  </p>
                 </div>
               ) : (
                 <div className="my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
