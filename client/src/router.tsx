@@ -7,10 +7,12 @@ import Index from "./pages/Control/Index";
 // AUTHENTICATION
 import RequireAuth from "./context/RequireAuth";
 import AddProj from "./pages/Control/AddProj";
+import Project from "./pages/Project";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/projects", element: <Projects /> },
+  { path: "/project/:id", element: <Project /> },
   { path: "/control/login", element: <Login /> },
   {
     path: "/control",

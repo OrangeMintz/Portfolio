@@ -13,6 +13,11 @@ const projectSchema = new Schema({
         required: true
     },
 
+    tags: {
+        type: String,
+        required: true
+    },
+
     repository: {
         type: String,
     },

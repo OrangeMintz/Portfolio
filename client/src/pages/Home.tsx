@@ -53,11 +53,6 @@ function Home() {
           <Resume />
           <Services />
           <Contacts />
-          <div className="WIP">
-            <div className="container">
-              <p>WORK IN PROGRESS...</p>
-            </div>
-          </div>
         </div>
       </main>
       <Footer />
