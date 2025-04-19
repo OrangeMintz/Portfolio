@@ -19,12 +19,24 @@ const Mongodb = process.env.MONGODb
 const FrontEnd = process.env.FRONTEND
 
 // CORS Setup
-
+const allowedOrigins = [`${FrontEnd}`, "http://localhost:3000"];
 app.use(cors({
-    origin: FrontEnd,
-    optionsSuccessStatus: 200,
-    credentials: true
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
 }));
+
+// app.use(cors({
+//     origin: FrontEnd,
+//     optionsSuccessStatus: 200,
+//     credentials: true
+// }));
+
 
 // Connection to MongodDB
 const connect = async () => {
