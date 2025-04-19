@@ -17,6 +17,10 @@ const projectSchema = new Schema({
         type: String,
     },
 
+    preview: {
+        type: String,
+    },
+
     status: {
         type: String,
         required: true

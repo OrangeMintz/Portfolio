@@ -9,6 +9,15 @@ const getProjects = async (req, res) => {
     }
 }
 
+const getProject = async (req, res) => {
+    try {
+        const projects = await Project.findById(req.params.id)
+        res.status(200).json(projects)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const postProject = async (req, res) => {
     try {
         const newProject = new Project(req.body);
@@ -37,4 +46,4 @@ const updateProject = async (req, res) => {
     }
 }
 
-export { getProjects, postProject, deleteProject, updateProject }
+export { getProjects, getProject, postProject, deleteProject, updateProject }
