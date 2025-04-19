@@ -166,33 +166,30 @@ h6 {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-/* #preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: var(--background-color);
-  transition: all 0.6s ease-out;
-}
-
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #ffffff;
-  border-color: var(--accent-color) transparent var(--accent-color) transparent;
-  border-radius: 50%;
+#preloader-circle {
+  position: relative; /* Ensure it stays inside the parent */
   width: 60px;
   height: 60px;
+  background: transparent;
+}
+
+#preloader-circle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border: 6px solid transparent;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
   animation: animate-preloader 1.5s linear infinite;
-} */
+}
 
 @keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
