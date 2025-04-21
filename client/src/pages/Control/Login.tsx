@@ -47,9 +47,7 @@ const Login = () => {
       toast.success("Successfully signed in!");
       navigate("/control");
     } catch (err: any) {
-      toast.error(
-        err.message || "This account is not authorized for this site"
-      );
+      toast.error("Login failed or unauthorized access.");
     } finally {
       loadingSetter(false);
     }
@@ -171,11 +169,7 @@ const Login = () => {
                   onClick={() => handleOAuthLogin(githubProvider)}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
-                  <img
-                    className="h-5 w-5"
-                    src="https://www.svgrepo.com/show/512317/github-142.svg"
-                    alt="GitHub"
-                  />
+                  <i className="fa-brands fa-github text-gray-800 text-lg"></i>
                 </button>
               </div>
               <div>
@@ -184,11 +178,7 @@ const Login = () => {
                   onClick={() => handleOAuthLogin(googleProvider)}
                   className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
-                  <img
-                    className="h-6 w-6"
-                    src="https://www.svgrepo.com/show/506498/google.svg"
-                    alt="Google"
-                  />
+                  <i className="fa-brands fa-google text-gray-800 text-lg"></i>
                 </button>
               </div>
             </div>

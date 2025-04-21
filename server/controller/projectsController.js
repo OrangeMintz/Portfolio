@@ -1,4 +1,7 @@
 import Project from '../model/projects.js'
+import upload from "../middleware/multer.js";
+
+const uploadImages = upload.array("image", 8); // middleware
 
 const getProjects = async (req, res) => {
     try {
@@ -20,13 +23,21 @@ const getProject = async (req, res) => {
 
 const postProject = async (req, res) => {
     try {
-        const newProject = new Project(req.body);
-        const savedProject = await newProject.save()
-        res.status(200).json(savedProject)
+        const images = req.files.map((file) => file.path);
+
+        const newProject = new Project({
+            ...req.body,
+            images,
+        });
+
+        const savedProject = await newProject.save();
+        res.status(200).json(savedProject);
     } catch (error) {
-        console.log(error)
+        console.error("Error posting project:", error);
+        res.status(500).json({ error: "Failed to post project" });
     }
-}
+};
+
 
 const deleteProject = async (req, res) => {
     try {
@@ -46,4 +57,4 @@ const updateProject = async (req, res) => {
     }
 }
 
-export { getProjects, getProject, postProject, deleteProject, updateProject }
+export { getProjects, getProject, postProject, uploadImages, deleteProject, updateProject }

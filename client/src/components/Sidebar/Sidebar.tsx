@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { onAuthStateChanged, User } from "firebase/auth";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import "./sidebar.css";
 
@@ -9,6 +11,7 @@ import { auth } from "../../config/firebase";
 
 function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeHash, setActiveHash] = useState("#home");
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -52,10 +55,11 @@ function Sidebar() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("Logged out");
-      // optionally redirect or show toast
+      toast.success("Logged out successfully.");
+      navigate("/control/login");
     } catch (err) {
       console.error("Logout failed:", err);
+      toast.error("Failed to logout. Please try again.");
     }
   };
 

@@ -59,7 +59,7 @@ const Projects = () => {
                 <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
                   <div id="preloader-circle"></div>
                   <p className="text-gray-600 text-sm m-0 leading-tight">
-                    Might take a while during first load
+                    This might take a while during first load
                   </p>
                 </div>
               ) : error ? (
@@ -87,7 +87,7 @@ const Projects = () => {
                         </div>
                       </a>
                       <div className="p-4">
-                        <a href="#">
+                        <a href={`project/${project._id}`}>
                           <p className="text-2xl font-medium tracking-tight text-gray-700 line-clamp-2 h-8 overflow-hidden">
                             {project.name}
                           </p>
