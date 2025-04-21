@@ -38,10 +38,9 @@ const postProject = async (req, res) => {
     }
 };
 
-
 const deleteProject = async (req, res) => {
     try {
-        const deleteProject = await Post.findByIdAndDelete(req.params.id);
+        const deleteProject = await Project.findByIdAndDelete(req.params.id);
         res.status(200).json(`${deleteProject.name} Successfully Deleted`)
     } catch (error) {
         console.log(error)
@@ -57,4 +56,4 @@ const updateProject = async (req, res) => {
     }
 }
 
-export { getProjects, getProject, postProject, uploadImages, deleteProject, updateProject }
+export { deleteProject, getProjects, getProject, postProject, uploadImages, updateProject }

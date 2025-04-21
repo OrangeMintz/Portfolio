@@ -11,12 +11,9 @@ router.get(`/${project}`, getProjects);
 
 router.get(`/${project}:id`, getProject);
 
-// router.post(`/${project}`, postProject);
-
 router.post(`/${project}`, uploadImages, postProject);
 
-
-router.delete(`/${project}:id`, deleteProject)
+router.delete(`/${project}:id`, deleteProject);
 
 router.put(`/${project}:id`, updateProject)
 

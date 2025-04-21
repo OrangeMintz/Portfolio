@@ -2,6 +2,9 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../config/firebase";
+import { toast } from "react-toastify";
 
 type Project = {
   _id: string;
@@ -21,6 +24,18 @@ const Projects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
+    null
+  );
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     fetch(
@@ -38,6 +53,33 @@ const Projects = () => {
       });
   }, []);
 
+  const handleDeleteProject = async () => {
+    if (!selectedProjectId) return;
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/${
+          import.meta.env.VITE_API_PROJECT
+        }/${selectedProjectId}`,
+        { method: "DELETE" }
+      );
+
+      if (res.ok) {
+        setProjects((prev) =>
+          prev.filter((proj) => proj._id !== selectedProjectId)
+        );
+        toast.success("Project deleted successfully.");
+      } else {
+        toast.error("Failed to delete the project.");
+      }
+    } catch (err) {
+      console.error("Error deleting project:", err);
+      toast.error("An error occurred while deleting the project.");
+    } finally {
+      setShowDeleteModal(false);
+      setSelectedProjectId(null);
+    }
+  };
   return (
     <>
       <Sidebar />
@@ -73,10 +115,22 @@ const Projects = () => {
                   {projects.map((project, index) => (
                     <div
                       key={project._id}
-                      className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+                      className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
                       data-aos="fade-up"
                       data-aos-delay={100 + index * 50}
                     >
+                      {isLoggedIn && (
+                        <button
+                          onClick={() => {
+                            setSelectedProjectId(project._id);
+                            setShowDeleteModal(true);
+                          }}
+                          className="absolute right-1 text-red-500 hover:text-red-700 font-medium text-lg z-10 p-3"
+                          title="Delete project"
+                        >
+                          <i className="fa-solid fa-trash"></i>
+                        </button>
+                      )}
                       <a href={`project/${project._id}`}>
                         <div className="h-48 w-full overflow-hidden rounded-t-lg">
                           <img
@@ -132,6 +186,51 @@ const Projects = () => {
         </section>
       </main>
       <Footer />
+
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="relative p-4 w-full max-w-md h-auto">
+            <div className="relative p-6 sm:p-5 text-center bg-white rounded-lg shadow">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                className="absolute top-2.5 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+
+              <img
+                className="w-13 mb-3.5 mx-auto"
+                src="/portfolio/assets/img/trash.gif"
+                alt="Delete Icon"
+              />
+
+              <p className="mb-4 text-gray-500 text-base">
+                Are you sure you want to delete this project?
+              </p>
+
+              <div className="flex justify-center items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowDeleteModal(false)}
+                  className="py-2 px-4 text-sm font-medium text-gray-600 bg-white border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 hover:text-gray-900"
+                  style={{ borderRadius: "0.5rem" }}
+                >
+                  No, cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteProject}
+                  className="py-2 px-4 text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300"
+                  style={{ borderRadius: "0.5rem" }}
+                >
+                  Yes, I'm sure
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
