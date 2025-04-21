@@ -167,7 +167,7 @@ const Login = () => {
                 <button
                   disabled={githubLoading}
                   onClick={() => handleOAuthLogin(githubProvider)}
-                  className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-transform transform hover:scale-105 hover:shadow-lg"
                 >
                   <i className="fa-brands fa-github text-gray-800 text-lg"></i>
                 </button>
@@ -176,7 +176,7 @@ const Login = () => {
                 <button
                   disabled={googleLoading}
                   onClick={() => handleOAuthLogin(googleProvider)}
-                  className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-transform transform hover:scale-105 hover:shadow-lg"
                 >
                   <i className="fa-brands fa-google text-gray-800 text-lg"></i>
                 </button>
