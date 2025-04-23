@@ -6,15 +6,26 @@ function Resume() {
           <h2>Resume</h2>
           <p>
             With a strong foundation in information technology and practical
-            experience in web development, computer system
-            assembly, cybersecurity and game development, my journey reflects a commitment to
-            innovation and continuous learning. This resume highlights the
+            experience in web development, computer system assembly,
+            cybersecurity and game development, my journey reflects a commitment
+            to innovation and continuous learning. This resume highlights the
             skills, projects, and accomplishments that equip me to contribute
             effectively to dynamic, tech-driven environments.
           </p>
+
+          <div className="mt-4">
+            <a
+              href="/portfolio/assets/Djeikuje-Resume.pdf"
+              download
+              className="inline-block px-[13px] py-[10px] text-white bg-[#149ddd] hover:bg-[#1290ca]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1290ca] duration-150 rounded-lg"
+            >
+              <i className="fa-solid fa-download mr-[6px]"></i>
+              Download
+            </a>
+          </div>
         </div>
 
-        <div className="container">
+        <div className="container mt-[-36px]">
           <div className="row">
             <div className="col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <h3 className="resume-title">Summary</h3>
