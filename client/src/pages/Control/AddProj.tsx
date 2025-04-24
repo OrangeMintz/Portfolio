@@ -15,7 +15,7 @@ const AddProj = () => {
     tags: "",
     date: "",
     status: "",
-    sub_heading: "",
+    subheading: "",
     description: "",
   });
 
@@ -65,7 +65,7 @@ const AddProj = () => {
         tags: "",
         date: "",
         status: "",
-        sub_heading: "",
+        subheading: "",
         description: "",
       });
       setImages(null);
@@ -264,19 +264,19 @@ const AddProj = () => {
 
                   <div className="mb-6" data-aos="fade-up" data-aos-delay="100">
                     <label
-                      htmlFor="sub_heading"
+                      htmlFor="subheading"
                       className="block mb-2 text-sm font-medium text-gray-900"
                     >
                       Sub Heading
                     </label>
                     <input
                       type="text"
-                      id="sub_heading"
-                      name="sub_heading"
+                      id="subheading"
+                      name="subheading"
                       className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       placeholder="MERN + Firebase Authentication"
                       required
-                      value={formData.sub_heading}
+                      value={formData.subheading}
                       onChange={handleChange}
                     />
                   </div>

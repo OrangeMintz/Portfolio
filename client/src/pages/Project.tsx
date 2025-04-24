@@ -150,7 +150,7 @@ const Project = () => {
                       data-aos="fade-up"
                       data-aos-delay="300"
                     >
-                      <h2 className="text-2xl font-semibold mb-2">
+                      <h2 className="text-2xl font-semibold mb-8">
                         {project.subheading}
                       </h2>
                       <p className="text-gray-600">{project.description}</p>
