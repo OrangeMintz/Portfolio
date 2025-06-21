@@ -100,13 +100,13 @@ function Resume() {
                   </em>
                 </p>
                 <p>
-                  Currently pursuing a Bachelor’s degree in Information
-                  Technology, expected to graduate in 2025. Recognized as a
-                  Dean&apos;s List scholar for three consecutive years.
-                  Completed Competency Level 2 in the TOPCIT Exam, along with
-                  certifications in &quot;Introduction to Cybersecurity&quot;,
-                  &quot;Cyber Threat Management&quot;. and &quot;Academic
-                  Mentoring 2024-2025&quot;
+                  Graduated <strong>Cum Laude</strong> with a Bachelor&apos;s
+                  degree in Information Technology in 2025. Consistently
+                  recognized on the Dean&apos;s List for three consecutive
+                  years. Achieved Competency Level 2 in the TOPCIT Exam and
+                  earned certifications in &quot;Introduction to
+                  Cybersecurity&quot;, &quot;Cyber Threat Management&quot;. and
+                  &quot;Academic Mentoring 2024-2025&quot;
                 </p>
               </div>
             </div>

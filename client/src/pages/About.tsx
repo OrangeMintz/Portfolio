@@ -1,4 +1,37 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Project from "./Project";
+
+type ProjectStatusCount = {
+  featured: number;
+  finished: number;
+  ongoing: number;
+  dropped: number;
+};
+
 function About() {
+  const [counts, setCounts] = useState<ProjectStatusCount>({
+    featured: 0,
+    finished: 0,
+    ongoing: 0,
+    dropped: 0,
+  });
+
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/${
+        import.meta.env.VITE_API_PROJECT
+      }/count`
+    )
+      .then((res) => res.json())
+      .then((data: ProjectStatusCount) => {
+        setCounts(data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch project status counts:", err);
+      });
+  }, []);
+
   return (
     <>
       <main className="main">
@@ -108,7 +141,7 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-check-circle"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    15
+                    {counts.finished}
                   </span>
                   <p>
                     <strong>Finished Projects</strong> <br></br>
@@ -120,7 +153,7 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-terminal"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    2
+                    {counts.ongoing}
                   </span>
                   <p>
                     <strong>Ongoing Projects</strong> <br></br>
@@ -132,7 +165,7 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-trash"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    0
+                    {counts.dropped}
                   </span>
                   <p>
                     <strong>Dropped Projects</strong> <br></br>
@@ -144,7 +177,7 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-heart"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    2
+                    {counts.featured}
                   </span>
                   <p>
                     <strong>Featured Projects</strong> <br></br>

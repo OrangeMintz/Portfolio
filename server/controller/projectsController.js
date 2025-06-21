@@ -21,6 +21,25 @@ const getProject = async (req, res) => {
     }
 }
 
+const getProjectStatusCounts = async (req, res) => {
+    try {
+        const featuredCount = await Project.countDocuments({ status: "featured" });
+        const finishedCount = await Project.countDocuments({ status: "finished" });
+        const ongoingCount = await Project.countDocuments({ status: "ongoing" });
+        const droppedCount = await Project.countDocuments({ status: "dropped" });
+
+        res.status(200).json({
+            featured: featuredCount,
+            finished: finishedCount,
+            ongoing: ongoingCount,
+            dropped: droppedCount,
+        });
+    } catch (error) {
+        console.error("Error fetching project counts:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
 const postProject = async (req, res) => {
     try {
         const images = req.files.map((file) => file.path);
@@ -56,4 +75,4 @@ const updateProject = async (req, res) => {
     }
 }
 
-export { deleteProject, getProjects, getProject, postProject, uploadImages, updateProject }
+export { deleteProject, getProjects, getProject, getProjectStatusCounts, postProject, uploadImages, updateProject }
