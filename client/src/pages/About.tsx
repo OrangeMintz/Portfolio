@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Project from "./Project";
 
 type ProjectStatusCount = {
   featured: number;
