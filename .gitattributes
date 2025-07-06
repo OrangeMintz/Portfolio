@@ -1,3 +1,4 @@
 # Ignore CSS
 client/public/portfolio/assets/css/main.css linguist-vendored
+client/public/portfolio/assets/font/all.css linguist-vendored
 client/src/components/Sidebar/sidebar.css linguist-vendored
