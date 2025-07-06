@@ -173,6 +173,16 @@ function Sidebar() {
                 <i className="bi bi-stack navicon"></i> Projects
               </a>
             </li>
+
+            <li>
+              <a
+                href="/certificates"
+                className={isActive("/certificates") ? "active" : ""}
+              >
+                <i className="fa-solid fa-certificate navicon  text-xl mr-[9px]"></i>{" "}
+                Certificates
+              </a>
+            </li>
           </ul>
 
           {currentUser && (
