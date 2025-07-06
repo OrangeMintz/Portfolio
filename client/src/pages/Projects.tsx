@@ -114,72 +114,78 @@ const Projects = () => {
                 ) : (
                   <div className="my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
-                      <div
-                        key={project._id}
-                        className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
-                        data-aos="fade-up"
-                        data-aos-delay={100 + index * 50}
-                      >
-                        {isLoggedIn && (
-                          <button
-                            onClick={() => {
-                              setSelectedProjectId(project._id);
-                              setShowDeleteModal(true);
-                            }}
-                            className="absolute right-1 text-red-500 hover:text-red-700  p-3"
-                            title="Delete project"
+                      <a href={`project/${project._id}`}>
+                        <div
+                          data-aos="fade-up"
+                          data-aos-delay={100 + index * 50}
+                        >
+                          <div
+                            key={project._id}
+                            className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm 
+                                 dark:bg-gray-800 dark:border-gray-700 
+                                 transition transform duration-300 ease-in-out 
+                                 hover:scale-105 hover:shadow-lg"
                           >
-                            <i className="fa-solid fa-trash text-xl"></i>
-                          </button>
-                        )}
-                        <a href={`project/${project._id}`}>
-                          <div className="h-48 w-full overflow-hidden rounded-t-lg">
-                            <img
-                              className="h-full w-full object-cover"
-                              src={project.images[0]}
-                              alt={project.name}
-                            />
-                          </div>
-                        </a>
-                        <div className="p-4">
-                          <a href={`project/${project._id}`}>
-                            <p className="text-2xl font-medium tracking-tight text-gray-700 line-clamp-2 h-8 overflow-hidden">
-                              {project.name}
-                            </p>
-                          </a>
-                          <p className="mb-4 text-gray-600 line-clamp-3 overflow-hidden">
-                            <strong>Tags: </strong>
-                            {project.tags}
-                          </p>
-                          <p className=" text-gray-400 line-clamp-3 h-20 overflow-hidden">
-                            {project.description}
-                          </p>
-                          <div className="space-x-1">
-                            {project.preview && (
-                              <a
-                                href={project.preview}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center px-3 py-[10px] text-base font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                            {isLoggedIn && (
+                              <button
+                                onClick={() => {
+                                  setSelectedProjectId(project._id);
+                                  setShowDeleteModal(true);
+                                }}
+                                className="absolute right-1 text-red-500 hover:text-red-700  p-3"
+                                title="Delete project"
                               >
-                                Live{" "}
-                                <i className="fa-solid fa-arrow-right ml-2"></i>
-                              </a>
+                                <i className="fa-solid fa-trash text-xl"></i>
+                              </button>
                             )}
-                            {project.repository && (
-                              <a
-                                href={project.repository}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center px-3 py-[10px] text-base font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                              >
-                                Code{" "}
-                                <i className="fa-brands fa-github ml-2"></i>
+                            <div className="h-48 w-full overflow-hidden rounded-t-lg">
+                              <img
+                                className="h-full w-full object-cover"
+                                src={project.images[0]}
+                                alt={project.name}
+                              />
+                            </div>
+                            <div className="p-4">
+                              <a href={`project/${project._id}`}>
+                                <p className="text-2xl font-medium tracking-tight text-gray-700 line-clamp-2 h-8 overflow-hidden">
+                                  {project.name}
+                                </p>
                               </a>
-                            )}
+                              <p className="mb-4 text-gray-600 line-clamp-3 overflow-hidden">
+                                <strong>Tags: </strong>
+                                {project.tags}
+                              </p>
+                              <p className=" text-gray-400 line-clamp-3 h-20 overflow-hidden">
+                                {project.description}
+                              </p>
+                              <div className="space-x-1">
+                                {project.preview && (
+                                  <a
+                                    href={project.preview}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-3 py-[10px] text-base font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                  >
+                                    Live{" "}
+                                    <i className="fa-solid fa-arrow-right ml-2"></i>
+                                  </a>
+                                )}
+                                {project.repository && (
+                                  <a
+                                    href={project.repository}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-3 py-[10px] text-base font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                  >
+                                    Code{" "}
+                                    <i className="fa-brands fa-github ml-2"></i>
+                                  </a>
+                                )}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 )}
