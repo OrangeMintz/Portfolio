@@ -110,7 +110,7 @@ function Certificates() {
                 ) : error ? (
                   <div className="flex items-center justify-center h-[60vh]">
                     <p className="text-red-500 text-2xl">
-                      Failed to load projects.
+                      Failed to load certificates.
                     </p>
                   </div>
                 ) : (
