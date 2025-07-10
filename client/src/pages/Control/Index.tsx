@@ -89,7 +89,11 @@ const Index = () => {
                     </div>
                   </a>
 
-                  <a href="" data-aos="fade-up" data-aos-delay="100">
+                  <a
+                    href="/control/certificate"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                  >
                     <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
                       <div className="flex items-center gap-4">
                         <i className="fa-solid fa-certificate text-gray-700 text-xl"></i>

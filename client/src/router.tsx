@@ -9,6 +9,7 @@ import Index from "./pages/Control/Index";
 import RequireAuth from "./context/RequireAuth";
 import AddProj from "./pages/Control/AddProj";
 import Project from "./pages/Project";
+import AddCert from "./pages/Control/AddCert";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -29,6 +30,14 @@ const router = createBrowserRouter([
     element: (
       <RequireAuth>
         <AddProj />
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/control/certificate",
+    element: (
+      <RequireAuth>
+        <AddCert />
       </RequireAuth>
     ),
   },

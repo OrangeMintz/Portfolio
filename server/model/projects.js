@@ -50,7 +50,7 @@ const projectSchema = new Schema({
     }
 
 }, { timestamps: true }
-)
+);
 
 const projectModel = mongoose.model('Project', projectSchema);
 export default projectModel;

@@ -6,6 +6,7 @@ import cors from 'cors'
 //ROUTES's
 import mail from './routes/mailRoute.js'
 import project from './routes/projectsRoute.js'
+import certificate from './routes/certRoute.js'
 
 
 //Module Setup
@@ -58,6 +59,7 @@ mongoose.connection.on('disconnected', () => {
 //API's
 app.use('/api/mail', mail);
 app.use('/api/control/project', project);
+app.use('/api/control/certificate', certificate)
 
 
 

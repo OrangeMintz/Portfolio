@@ -1,5 +1,5 @@
 import Project from '../model/projects.js'
-import upload from "../middleware/multer.js";
+import upload from "../middleware/multerProject.js";
 
 const uploadImages = upload.array("image", 8); // middleware
 
