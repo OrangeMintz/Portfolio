@@ -116,21 +116,19 @@ function Certificates() {
                 ) : (
                   <div className="my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {certificates.map((certificate, index) => (
-                      <div>
+                      <a
+                        href={certificate.preview}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <div
                           data-aos="fade-up"
                           data-aos-delay={100 + index * 50}
                         >
                           <div className="text-center">
-                            <a
-                              href={certificate.preview}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <p className="text-lg font-[Raleway] text-gray-800 hover:text-blue-400 transition duration-200">
-                                {certificate.event}
-                              </p>
-                            </a>
+                            <p className="text-lg font-[Raleway] text-gray-800 hover:text-blue-400 transition duration-200">
+                              {certificate.event}
+                            </p>
                           </div>
                           <div className="text-right mt-[-12px] mb-3">
                             <div className="flex items-center justify-end gap-1 text-sm text-gray-600">
@@ -149,7 +147,9 @@ function Certificates() {
                           <div className="w-full max-w-md rounded-lg shadow-sm  transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
                             {isLoggedIn && (
                               <button
-                                onClick={() => {
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
                                   setSelectedCertificateId(certificate._id);
                                   setShowDeleteModal(true);
                                 }}
@@ -159,20 +159,14 @@ function Certificates() {
                                 <i className="fa-solid fa-trash text-xl"></i>
                               </button>
                             )}
-                            <a
-                              href={certificate.preview}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <img
-                                className="block w-full rounded-t-lg rounded-lg"
-                                src={certificate.certificate}
-                                alt="certificate"
-                              />
-                            </a>
+                            <img
+                              className="block w-full rounded-t-lg rounded-lg"
+                              src={certificate.certificate}
+                              alt="certificate"
+                            />
                           </div>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 )}

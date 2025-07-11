@@ -128,7 +128,9 @@ const Projects = () => {
                           >
                             {isLoggedIn && (
                               <button
-                                onClick={() => {
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  e.preventDefault();
                                   setSelectedProjectId(project._id);
                                   setShowDeleteModal(true);
                                 }}
