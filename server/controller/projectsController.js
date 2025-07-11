@@ -1,7 +1,7 @@
 import Project from '../model/projects.js'
 import upload from "../middleware/multerProject.js";
 
-const uploadImages = upload.array("image", 8); // middleware
+const uploadImages = upload.array("image", 20); // middleware
 
 const getProjects = async (req, res) => {
     try {
