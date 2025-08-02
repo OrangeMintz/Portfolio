@@ -429,6 +429,12 @@ section,
   text-align: justify;
 }
 
+.about .content ul span {
+  font-size: 15px;
+  white-space: normal;
+  word-break: break-word;
+}
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/

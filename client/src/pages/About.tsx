@@ -104,12 +104,12 @@ function About() {
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Phone:</strong> <span>+63 960 6421 564</span>
+                        <strong>Phone:</strong> <span>+63 966 0516 144</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
                         <strong>City:</strong>{" "}
-                        <span>Valencia City, Philippines</span>
+                        <span>Valencia City, Bukidnon, Philippines</span>
                       </li>
                     </ul>
                   </div>
@@ -121,12 +121,15 @@ function About() {
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Degree:</strong> <span>BSIT</span>
+                        <strong>Degree:</strong>{" "}
+                        <span>
+                          Bachelor of Science in Information Technology
+                        </span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
                         <strong>Email:</strong>{" "}
-                        <span>nickzgacus@gmail.com</span>
+                        <span>djeikuje.gacus@gmail.com</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}

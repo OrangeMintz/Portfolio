@@ -84,7 +84,7 @@ function Contacts() {
                   <i className="bi bi-geo-alt flex-shrink-0"></i>
                   <div>
                     <h3>Address</h3>
-                    <p>L.F Purok 6-A, Dayyo Subd, Poblacion, Valencia City</p>
+                    <p>Poblacion, Valencia City, Bukidnon, Philippines</p>
                   </div>
                 </div>
 
@@ -108,7 +108,7 @@ function Contacts() {
                   <i className="bi bi-envelope flex-shrink-0"></i>
                   <div>
                     <h3>Email Us</h3>
-                    <p>Djeikuje.gacus@gmail.com</p>
+                    <p>djeikuje.gacus@gmail.com</p>
                   </div>
                 </div>
 
