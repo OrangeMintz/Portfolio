@@ -36,7 +36,6 @@
   background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -1;
   opacity: 0.02;
 }
 
