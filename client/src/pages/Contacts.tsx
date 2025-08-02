@@ -108,7 +108,7 @@ function Contacts() {
                   <i className="bi bi-envelope flex-shrink-0"></i>
                   <div>
                     <h3>Email Us</h3>
-                    <p>Nickzgacus@gmail.com</p>
+                    <p>Djeikuje.gacus@gmail.com</p>
                   </div>
                 </div>
 
