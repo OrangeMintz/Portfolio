@@ -1,5 +1,5 @@
 # Portfolio <img src="https://img.shields.io/badge/by-OrangeMintz-016eea.svg?logo=github&labelColor=181717&">
-This is my Work in Progress project for my Work Portfolio Profile. This details my Personal Information, Projects and Work Experiences.
+This is my Work in Progress project for my Work Portfolio Profile. This details my Personal Information, Projects, Certificates and Work Experiences.
 
 ## Vercel Application
 
