@@ -53,13 +53,6 @@ const Projects = () => {
       });
   }, []);
 
-  const statusPriority: Record<string, number> = {
-    ongoing: 4,
-    featured: 3,
-    finished: 2,
-    dropped: 1,
-  };
-
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
