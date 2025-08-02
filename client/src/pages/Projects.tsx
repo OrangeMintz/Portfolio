@@ -53,6 +53,44 @@ const Projects = () => {
       });
   }, []);
 
+  const statusPriority: Record<string, number> = {
+    ongoing: 4,
+    featured: 3,
+    finished: 2,
+    dropped: 1,
+  };
+
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+
+  const filteredProjects = projects
+    .filter((project) =>
+      statusFilter === "all" ? true : project.status === statusFilter
+    )
+    .sort((a, b) => {
+      const getPriority = (status: string) => {
+        switch (status) {
+          case "ongoing":
+            return 4;
+          case "featured":
+            return 3;
+          case "finished":
+            return 2;
+          case "dropped":
+            return 1;
+          default:
+            return 0;
+        }
+      };
+
+      const priorityDiff = getPriority(b.status) - getPriority(a.status);
+      if (priorityDiff !== 0) return priorityDiff;
+
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return sortOrder === "desc" ? dateB - dateA : dateA - dateB;
+    });
+
   const handleDeleteProject = async () => {
     if (!selectedProjectId) return;
 
@@ -80,6 +118,7 @@ const Projects = () => {
       setSelectedProjectId(null);
     }
   };
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -95,6 +134,31 @@ const Projects = () => {
                   This page explores a collection of projects that highlight my
                   skills in design, development, and problem-solving.
                 </p>
+              </div>
+              {/* SORT */}
+              <div className="flex flex-wrap gap-4 justify-center md:justify-end mb-2 mt-6 lg:mr-6 px-4 md:px-8">
+                <select
+                  className="border border-gray-300 rounded-md px-3 py-2 min-w-[120px] transition transform duration-300 ease-in-out hover:shadow-lg"
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  <option value="ongoing">Ongoing</option>
+                  <option value="featured">Featured</option>
+                  <option value="finished">Finished</option>
+                  <option value="dropped">Dropped</option>
+                </select>
+
+                <select
+                  className="border border-gray-300 rounded-md px-3 py-2 min-w-[120px] transition transform duration-300 ease-in-out hover:shadow-lg"
+                  value={sortOrder}
+                  onChange={(e) =>
+                    setSortOrder(e.target.value as "asc" | "desc")
+                  }
+                >
+                  <option value="desc">Newest</option>
+                  <option value="asc">Oldest</option>
+                </select>
               </div>
 
               <div className="flex justify-center px-4 md:px-8">
@@ -113,7 +177,7 @@ const Projects = () => {
                   </div>
                 ) : (
                   <div className="my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project, index) => (
+                    {filteredProjects.map((project, index) => (
                       <a href={`project/${project._id}`}>
                         <div
                           data-aos="fade-up"
@@ -122,7 +186,6 @@ const Projects = () => {
                           <div
                             key={project._id}
                             className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm 
-                                 dark:bg-gray-800 dark:border-gray-700 
                                  transition transform duration-300 ease-in-out 
                                  hover:scale-105 hover:shadow-lg"
                           >
@@ -146,6 +209,21 @@ const Projects = () => {
                                 src={project.images[0]}
                                 alt={project.name}
                               />
+                              <span
+                                className={`absolute top-2 left-2 capitalize text-xs px-2 py-1 rounded-md shadow ${
+                                  project.status === "featured"
+                                    ? "bg-indigo-600 text-white"
+                                    : project.status === "ongoing"
+                                    ? "bg-yellow-400 text-black"
+                                    : project.status === "dropped"
+                                    ? "bg-red-600 text-white"
+                                    : project.status === "finished"
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-gray-300 text-black"
+                                }`}
+                              >
+                                {project.status}
+                              </span>
                             </div>
                             <div className="p-4">
                               <a href={`project/${project._id}`}>

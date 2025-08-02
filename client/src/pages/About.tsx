@@ -15,6 +15,8 @@ function About() {
     dropped: 0,
   });
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch(
       `${import.meta.env.VITE_BACKEND_URL}/${
@@ -24,11 +26,29 @@ function About() {
       .then((res) => res.json())
       .then((data: ProjectStatusCount) => {
         setCounts(data);
+        setLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch project status counts:", err);
+        setLoading(false);
       });
   }, []);
+
+  // Loading dots effect
+  const [loadingDots, setLoadingDots] = useState(".");
+
+  useEffect(() => {
+    if (!loading) return;
+
+    const interval = setInterval(() => {
+      setLoadingDots((prev) => {
+        if (prev === "...") return "";
+        return prev + ".";
+      });
+    }, 500); // change speed if you like
+
+    return () => clearInterval(interval);
+  }, [loading]);
 
   return (
     <>
@@ -139,7 +159,9 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-check-circle"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    {counts.finished}
+                    <span className={loading ? "text-lg" : ""}>
+                      {loading ? `Loading${loadingDots}` : counts.finished}
+                    </span>
                   </span>
                   <p>
                     <strong>Finished Projects</strong> <br></br>
@@ -151,7 +173,9 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-terminal"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    {counts.ongoing}
+                    <span className={loading ? "text-lg" : ""}>
+                      {loading ? `Loading${loadingDots}` : counts.ongoing}
+                    </span>
                   </span>
                   <p>
                     <strong>Ongoing Projects</strong> <br></br>
@@ -163,7 +187,9 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-trash"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    {counts.dropped}
+                    <span className={loading ? "text-lg" : ""}>
+                      {loading ? `Loading${loadingDots}` : counts.dropped}
+                    </span>
                   </span>
                   <p>
                     <strong>Dropped Projects</strong> <br></br>
@@ -175,7 +201,9 @@ function About() {
                 <div className="stats-item">
                   <i className="bi bi-heart"></i>
                   <span data-purecounter-start="0" className="purecounter">
-                    {counts.featured}
+                    <span className={loading ? "text-lg" : ""}>
+                      {loading ? `Loading${loadingDots}` : counts.featured}
+                    </span>
                   </span>
                   <p>
                     <strong>Featured Projects</strong> <br></br>
