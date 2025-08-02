@@ -12,7 +12,7 @@ import Project from "./pages/Project";
 import AddCert from "./pages/Control/AddCert";
 
 // 404 Page
-import Error404 from "./components/404/error404";
+import Error404 from "./components/404/Error404";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
