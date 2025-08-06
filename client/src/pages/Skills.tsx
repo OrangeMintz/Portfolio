@@ -69,11 +69,11 @@ function Skills() {
           <div>
             <div className="flex justify-end mb-4 mt-[-2rem]">
               <button
-                style={{ borderRadius: "6px" }}
+                style={{ borderRadius: "6px", fontSize: "15px" }}
                 onClick={refreshSkills}
                 className="border border-gray-300 px-3 py-2 min-w-[100px] transition transform duration-300 ease-in-out hover:shadow-lg"
               >
-                <i className="bi bi-arrow-clockwise mr-[6px]"></i>
+                <i className="bi bi-arrow-clockwise mr-[6px] text-sm"></i>
                 {refreshing ? "Refreshing..." : "Refresh"}
               </button>
             </div>
