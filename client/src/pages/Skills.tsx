@@ -12,7 +12,7 @@ function Skills() {
 
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/${import.meta.env.VITE_API_GITHUB}`
+      `${import.meta.env.VITE_BACKEND_URL}/${import.meta.env.VITE_API_GITHUB}/`
     )
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
