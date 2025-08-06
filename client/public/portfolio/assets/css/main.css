@@ -540,6 +540,24 @@ section,
   margin-bottom: 10px;
 }
 
+.resume .resume-item .point-of-contact h5 {
+  font-size: 16px;
+  padding: 0px 0px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.resume .resume-item .point-of-contact i {
+  color: var(--accent-color);
+  font-size: 16px;
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.resume .resume-item .point-of-contact i:first-of-type {
+  padding-left: 0;
+}
+
 .resume .resume-item ul {
   padding-left: 20px;
 }

@@ -49,25 +49,28 @@ function Resume() {
                 </ul>
               </div>
 
-              <h3 className="resume-title">Non-Professional Experience</h3>
+              <h3 className="resume-title">Professional Experience</h3>
               <div className="resume-item">
-                <h4>Computer System Specialist</h4>
-                <h5>2019 - Present</h5>
+                <h4>LogicBase Interactive Ent. - Intern</h4>
+                <h5>2025 - 2025</h5>
                 <p>
-                  <em>Valencia City, Bukidnon, Philippines </em>
+                  <em>Web Developer</em>
                 </p>
                 <ul>
                   <li>
-                    Provides services like computer format, bios reformat,
-                    system troubleshooting, deep cleaning and etc.
+                    Developed and maintained web applications using Laravel,
+                    Next.js, and React. Gained hands-on experience with frontend
+                    and back-end integration, version control, database
+                    management and web designing.
                   </li>
-                  <li>
-                    Provided system support to family, friends and colleagues
-                  </li>
-                  <li>
-                    Assembled a decent personal desktop computer in August 2022
-                    curr. worth ₱86,000.00
-                  </li>
+                  <p className="point-of-contact">
+                    <h5>Mary Jane E. Nazareno</h5>
+                    <h6>HR Assistant/OJT Coordinator</h6>
+                    <i className="bi bi-envelope-fill"></i>
+                    <em>m_nazareno@logicbaseinteractive.com</em>
+                    <i className="bi bi-globe2"></i>
+                    <em>www.logicbaseinteractive.com</em>
+                  </p>
                 </ul>
               </div>
             </div>
