@@ -15,7 +15,7 @@ function Resume() {
 
           <div className="mt-4">
             <a
-              href="/portfolio/assets/Djeikuje-Resume-UP.pdf"
+              href="/portfolio/assets/Djeikuje-Nickolai-Gacus-Resume.pdf"
               download
               className="inline-block px-[13px] py-[10px] text-white bg-[#149ddd] hover:bg-[#1290ca]  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1290ca] duration-150 rounded-lg"
             >
