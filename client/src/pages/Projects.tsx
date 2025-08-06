@@ -159,12 +159,12 @@ const Projects = () => {
                   <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
                     <div id="preloader-circle"></div>
                     <p className="text-gray-600 text-sm m-0 leading-tight">
-                      This might take a while during first load
+                      This might take a while during first load.
                     </p>
                   </div>
                 ) : error ? (
                   <div className="flex items-center justify-center h-[60vh]">
-                    <p className="text-red-500 text-2xl">
+                    <p className="text-gray-600 text-xl">
                       Failed to load projects.
                     </p>
                   </div>

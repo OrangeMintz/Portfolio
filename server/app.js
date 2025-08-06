@@ -7,6 +7,7 @@ import cors from 'cors'
 import mail from './routes/mailRoute.js'
 import project from './routes/projectsRoute.js'
 import certificate from './routes/certRoute.js'
+import github from './routes/gitRoute.js';
 
 
 //Module Setup
@@ -32,14 +33,7 @@ app.use(cors({
     credentials: true,
 }));
 
-// app.use(cors({
-//     origin: FrontEnd,
-//     optionsSuccessStatus: 200,
-//     credentials: true
-// }));
 
-
-// Connection to MongodDB
 const connect = async () => {
     try {
         mongoose.connect(Mongodb)
@@ -60,6 +54,7 @@ mongoose.connection.on('disconnected', () => {
 app.use('/api/mail', mail);
 app.use('/api/control/project', project);
 app.use('/api/control/certificate', certificate)
+app.use('/api/github', github);
 
 
 

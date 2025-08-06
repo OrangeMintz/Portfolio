@@ -6,6 +6,7 @@ import About from "./About";
 import Resume from "./Resume";
 import Services from "./Services";
 import Contacts from "./Contacts";
+import Skills from "./Skills";
 
 function Home() {
   return (
@@ -50,6 +51,7 @@ function Home() {
         </section>
         <div style={{ padding: "0px 10px" }}>
           <About />
+          <Skills />
           <Resume />
           <Services />
           <Contacts />
