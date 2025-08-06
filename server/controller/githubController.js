@@ -1,11 +1,29 @@
 import fetch from 'node-fetch';
 import dotenv from 'dotenv'
+import redis from "../utils/cache.js";
 
 dotenv.config();
 
 const getTopLanguages = async (req, res) => {
     const username = req.params.username;
+    const cacheKey = `github:languages:${username}`;
     const EXCLUDED_LANGUAGES = ['Hack', 'Less'];
+
+    const shouldBypassCache = req.query.refresh === 'true';
+
+    if (!shouldBypassCache) {
+        try {
+            const cached = await redis.get(cacheKey);
+            if (cached) {
+                console.log("✅ Serving from cache");
+                return res.json(cached);
+            }
+        } catch (error) {
+            console.error("⚠️ Cache fetch error:", error);
+        }
+    } else {
+        console.log("🔁 Refresh requested, bypassing cache");
+    }
 
     try {
         const headers = {
@@ -46,7 +64,10 @@ const getTopLanguages = async (req, res) => {
             }))
             .sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage));
 
+        await redis.set(cacheKey, languagePercentages, { ex: 60 * 60 });
+
         res.json(languagePercentages);
+
     } catch (error) {
         console.error('Error fetching GitHub data:', error);
         res.status(500).json({ error: 'Failed to fetch data from GitHub' });

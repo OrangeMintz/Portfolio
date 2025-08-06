@@ -1,9 +1,7 @@
 import express from 'express'
-import dotenv from 'dotenv'
-
 import { deleteProject, getProject, getProjects, getProjectStatusCounts, postProject, uploadImages, updateProject } from '../controller/projectsController.js'
+
 const router = express.Router()
-dotenv.config();
 
 const project = process.env.PROJECT
 

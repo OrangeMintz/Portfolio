@@ -1,11 +1,9 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import { getTopLanguages } from '../controller/githubController.js';
 
-dotenv.config();
-const github = process.env.GITHUB;
-
 const router = express.Router();
+
+const github = process.env.GITHUB;
 
 router.get(`/${github}:username`, getTopLanguages);
 
