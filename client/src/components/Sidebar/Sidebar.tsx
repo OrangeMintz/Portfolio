@@ -143,6 +143,14 @@ function Sidebar() {
             </li>
             <li>
               <a
+                href="/#skills"
+                className={isActive("#skills") ? "active" : ""}
+              >
+                <i className="bi bi-code-slash navicon"></i> Skills
+              </a>
+            </li>
+            <li>
+              <a
                 href="/#resume"
                 className={isActive("#resume") ? "active" : ""}
               >

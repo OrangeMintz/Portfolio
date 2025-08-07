@@ -49,7 +49,10 @@ function Skills() {
     <section id="skills" className="skills section light-background">
       <div className="container section-title" data-aos="fade-up">
         <h2>Skills</h2>
-        <p>The data below is dynamically generated from Github repositories.</p>
+        <p>
+          Language stats below are generated in real-time from my GitHub
+          repositories.
+        </p>
       </div>
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
