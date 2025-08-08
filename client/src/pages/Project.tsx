@@ -4,6 +4,9 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import Footer from "../components/Footer/Footer";
 import "aos/dist/aos.css";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Keyboard, Mousewheel } from "swiper/modules";
+
 const Project = () => {
   type Project = {
     _id: string;
@@ -40,7 +43,6 @@ const Project = () => {
         setLoading(false);
       }
     };
-
     fetchProject();
   }, [id]);
 
@@ -74,21 +76,30 @@ const Project = () => {
               ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                   <div className="lg:col-span-2">
-                    <div className="swiper-wrapper flex gap-4 overflow-x-auto snap-x">
+                    <Swiper
+                      modules={[Navigation, Pagination, Keyboard, Mousewheel]}
+                      navigation
+                      pagination={{ clickable: true }}
+                      spaceBetween={20}
+                      slidesPerView={1}
+                      loop={true}
+                      autoHeight={true}
+                      keyboard={{ enabled: true }}
+                      mousewheel={{ forceToAxis: true }}
+                      className="rounded-lg swiper-slide"
+                    >
                       {project.images.map((img: string, i: number) => (
-                        <div
-                          key={i}
-                          className="swiper-slide snap-center shrink-0 w-full"
-                        >
-                          <img
-                            src={img}
-                            alt=""
-                            className="w-auto h-auto rounded-lg"
-                          />
-                        </div>
+                        <SwiperSlide key={i}>
+                          <div className="w-full h-[500px] flex items-center justify-center">
+                            <img
+                              src={img}
+                              alt=""
+                              className="max-w-full max-h-full object-contain rounded-lg"
+                            />
+                          </div>
+                        </SwiperSlide>
                       ))}
-                    </div>
-                    <div className="swiper-pagination mt-2"></div>
+                    </Swiper>
                   </div>
 
                   {/* Info Section */}
