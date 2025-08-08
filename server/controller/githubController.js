@@ -7,7 +7,7 @@ dotenv.config();
 const getTopLanguages = async (req, res) => {
     const username = req.params.username;
     const cacheKey = `github:languages:${username}`;
-    const EXCLUDED_LANGUAGES = ['Hack', 'Less'];
+    const EXCLUDED_LANGUAGES = ['Hack', 'Less', 'CSS', 'HTML'];
 
     const shouldBypassCache = req.query.refresh === 'true';
 
