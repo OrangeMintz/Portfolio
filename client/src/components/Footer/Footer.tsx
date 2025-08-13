@@ -11,7 +11,7 @@ function Footer() {
             </p>
           </div>
           <div className="credits">
-            Designed by <a href="https://github.com/OrangeMintz">OrangeMint</a>
+            Developed by <a href="https://github.com/OrangeMintz">OrangeMint</a>
           </div>
         </div>
       </footer>
