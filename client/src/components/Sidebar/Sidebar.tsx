@@ -28,7 +28,7 @@ function Sidebar() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
     sections.forEach((s) => observer.observe(s));
     return () => sections.forEach((s) => observer.unobserve(s));
@@ -69,7 +69,7 @@ function Sidebar() {
       setCurrentUser(user);
     });
 
-    return () => unsubscribe(); // cleanup listener on unmount
+    return () => unsubscribe();
   }, []);
 
   return (

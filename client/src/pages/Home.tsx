@@ -17,11 +17,8 @@ function Home() {
   useEffect(() => {
     const target = (location.state as any)?.scrollTo as string | undefined;
     if (!target) return;
-
-    // Wait a tick to ensure sections are in the DOM
     requestAnimationFrame(() => {
       document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
-      // Clear the state so it doesn't keep re-scrolling on back/forward
       navigate(location.pathname, { replace: true, state: {} });
     });
   }, [location.state, location.pathname, navigate]);
