@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
 import "./sidebar.css";
-
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
@@ -13,15 +11,15 @@ function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeHash, setActiveHash] = useState("#home");
-
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
 
   // Update active section when scrolling (Home page)
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -32,24 +30,25 @@ function Sidebar() {
       },
       { threshold: 0.5 }
     );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    sections.forEach((s) => observer.observe(s));
+    return () => sections.forEach((s) => observer.unobserve(s));
   }, []);
 
   // Determine if current path is /
   const isHome = location.pathname === "/";
-  const currentHash = location.hash || activeHash;
 
-  // Helper to apply "active" class
   const isActive = (idOrPath: string) => {
-    if (idOrPath.startsWith("/")) {
-      return location.pathname === idOrPath;
+    if (idOrPath.startsWith("/")) return location.pathname === idOrPath;
+    return isHome && activeHash === idOrPath;
+  };
+
+  const handleNavToSection = (id: string) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+      return;
     }
-    return isHome && currentHash === idOrPath;
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+    setActiveHash(id);
   };
 
   const handleLogout = async () => {
@@ -129,46 +128,52 @@ function Sidebar() {
           </Link>
         </div>
 
-        <nav id="navmenu" className="navmenu ">
+        <nav id="navmenu" className="navmenu">
           <ul>
             <li>
-              <a href="/#home" className={isActive("#home") ? "active" : ""}>
+              <a
+                className={isActive("#home") ? "active" : ""}
+                onClick={() => handleNavToSection("#home")}
+              >
                 <i className="bi bi-house navicon"></i> Home
               </a>
             </li>
             <li>
-              <a href="/#about" className={isActive("#about") ? "active" : ""}>
+              <a
+                className={isActive("#about") ? "active" : ""}
+                onClick={() => handleNavToSection("#about")}
+              >
                 <i className="bi bi-person navicon"></i> About
               </a>
             </li>
             <li>
               <a
-                href="/#skills"
                 className={isActive("#skills") ? "active" : ""}
+                onClick={() => handleNavToSection("#skills")}
               >
                 <i className="bi bi-code-slash navicon"></i> Skills
               </a>
             </li>
             <li>
               <a
-                href="/#resume"
                 className={isActive("#resume") ? "active" : ""}
+                onClick={() => handleNavToSection("#resume")}
               >
                 <i className="bi bi-file-earmark-text navicon"></i> Resume
               </a>
             </li>
             <li>
               <a
-                href="/#services"
                 className={isActive("#services") ? "active" : ""}
+                onClick={() => handleNavToSection("#services")}
               >
                 <i className="bi bi-hdd-stack navicon"></i> Services
               </a>
             </li>
             <li>
               <a
-                href="/#contact"
                 className={isActive("#contact") ? "active" : ""}
+                onClick={() => handleNavToSection("#contact")}
               >
                 <i className="bi bi-envelope navicon"></i> Contacts
               </a>
@@ -181,13 +186,12 @@ function Sidebar() {
                 <i className="bi bi-stack navicon"></i> Projects
               </a>
             </li>
-
             <li>
               <a
                 href="/certificates"
                 className={isActive("/certificates") ? "active" : ""}
               >
-                <i className="fa-solid fa-certificate navicon  text-xl mr-[9px]"></i>{" "}
+                <i className="fa-solid fa-certificate navicon text-xl mr-[9px]"></i>{" "}
                 Certificates
               </a>
             </li>
