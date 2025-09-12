@@ -8,4 +8,4 @@ https://orangemint-portfolio.vercel.app
 ```
 ## Note
 This is still a work in progress web application. Some sections may be incomplete or under refinement, and new features 
-or content are being actively developed. Feedback is welcome as I continue improving its design and features
+or content are being actively developed. Feedback is welcome as I continue improving its design and features.
