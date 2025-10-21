@@ -74,7 +74,7 @@ function Skills() {
               <button
                 style={{ borderRadius: "6px", fontSize: "15px" }}
                 onClick={refreshSkills}
-                className="border border-gray-300 px-3 py-2 min-w-[100px] transition transform duration-300 ease-in-out hover:shadow-lg"
+                className="border border-gray-300 px-3 py-2 min-w-[100px] transition transform duration-300 ease-in-out hover:shadow-lg z-1"
               >
                 <i className="bi bi-arrow-clockwise mr-[6px] text-sm"></i>
                 {refreshing ? "Refreshing..." : "Refresh"}
