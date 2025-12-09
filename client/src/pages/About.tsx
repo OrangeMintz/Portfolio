@@ -15,6 +15,22 @@ function About() {
     dropped: 0,
   });
 
+  const getAge = (date: string): number => {
+    const today = new Date();
+    const birth = new Date(date);
+
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+      age--;
+    }
+
+    return age;
+  };
+
+  const age = getAge("2002-09-10");
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -117,7 +133,7 @@ function About() {
                     <ul>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}
-                        <strong>Age:</strong> <span>22</span>
+                        <strong>Age:</strong> <span>{age}</span>
                       </li>
                       <li>
                         <i className="bi bi-chevron-right"></i>{" "}

@@ -52,9 +52,12 @@ const Index = () => {
                       Project Commit:{" "}
                       {commit ? (
                         <span className="inline-flex flex-col sm:flex-row gap-1 sm:gap-2 items-center justify-center">
-                          <span className="text-green-700 font-mono">
+                          <a
+                            href="https://github.com/OrangeMintz/Portfolio/commits/main/"
+                            className="!text-green-700 hover:!text-green-900 font-mono"
+                          >
                             {commit.sha}
-                          </span>
+                          </a>
                           <span>Date: {commit.date}</span>
                         </span>
                       ) : (
@@ -109,6 +112,28 @@ const Index = () => {
                       <div className="flex items-center gap-4">
                         <i className="fa-solid fa-blog text-gray-700 text-xl"></i>
                         <span className="text-lg text-gray-800">Blogs</span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="" data-aos="fade-up" data-aos-delay="100">
+                    <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
+                      <div className="flex items-center gap-4">
+                        <i className="fa-solid fa-cog text-gray-700 text-xl"></i>
+                        <span className="text-lg text-gray-800">
+                          General Settings
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="" data-aos="fade-up" data-aos-delay="100">
+                    <div className="bg-white border border-gray-800 rounded-2xl p-7 w-2xs transition-transform transform hover:scale-105 hover:shadow-lg">
+                      <div className="flex items-center gap-4">
+                        <i className="fa-solid fa-code-branch text-gray-700 text-xl"></i>
+                        <span className="text-lg text-gray-800">
+                          Version Control
+                        </span>
                       </div>
                     </div>
                   </a>
