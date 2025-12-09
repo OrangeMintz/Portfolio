@@ -144,7 +144,7 @@ function Certificates() {
                               </p>
                             </div>
                           </div>
-                          <div className="w-full max-w-md rounded-lg shadow-sm  transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+                          <div className="relative w-full max-w-md rounded-lg shadow-sm transition transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
                             {isLoggedIn && (
                               <button
                                 onClick={(e) => {
