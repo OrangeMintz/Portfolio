@@ -36,9 +36,12 @@ app.use(cors({
 
 const connect = async () => {
     try {
-        mongoose.connect(Mongodb)
+        await mongoose.connect(Mongodb, {
+            serverSelectionTimeoutMS: 5000, // 5 seconds
+            socketTimeoutMS: 45000, // 45 seconds
+        });
     } catch (error) {
-        console.log("Connecting to MongoDB")
+        console.log("Mongo Connection Failed. " + error.message);
     }
 }
 
@@ -49,6 +52,7 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('disconnected', () => {
     console.log("Disconnected to MongoDB")
 })
+
 
 //API's
 app.use('/api/mail', mail);
