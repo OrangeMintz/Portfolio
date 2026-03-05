@@ -37,7 +37,7 @@ function About() {
     fetch(
       `${import.meta.env.VITE_BACKEND_URL}/${
         import.meta.env.VITE_API_PROJECT
-      }/count`
+      }/count`,
     )
       .then((res) => res.json())
       .then((data: ProjectStatusCount) => {
@@ -73,17 +73,16 @@ function About() {
           <div className="container section-title" data-aos="fade-up">
             <h2>About</h2>
             <p>
-              My name is Djeikuje Nickolai C. Gacus, and I am passionate about
-              web development, IoT, ethical hacking, and game development. I
-              have a keen interest in exploring the evolving landscape of
-              technology and pushing the boundaries of innovation. From a young
-              age, I was captivated by computer hardware and assembly. At 18,
-              with only a basic understanding from repairing our family
-              computer, I successfully built my first custom desktop, deepening
-              my technical skills and igniting my enthusiasm for complex
-              systems. My journey in tech has been a continuous learning
-              process, driven by curiosity and a commitment to mastering diverse
-              aspects of the field.
+              My name is Djeikuje Nickolai C. Gacus, an Information Technology
+              graduate with a strong interest in web development, IoT,
+              cybersecurity, and software development. I enjoy learning about
+              emerging technologies and applying them to practical projects. My
+              interest in technology began with computer hardware and system
+              assembly, which led me to build my first custom desktop at the age
+              of 18 after gaining basic repair experience from our family
+              computer. This experience strengthened my curiosity about how
+              systems work and motivated me to continue developing my technical
+              skills across different areas of technology.
             </p>
           </div>
 
@@ -98,12 +97,13 @@ function About() {
               </div>
               <div className="col-lg-8 content">
                 <h2>
-                  Full Stack Web Developer &amp; Computer System Specialist
+                  Full Stack Web Developer, AI Automation Developer &amp;
+                  Computer System Specialist
                 </h2>
                 <p className="fst-italic py-3">
-                  A full stack developer with a strong foundation in building
-                  web applications and hands-on experience assembling and
-                  optimizing desktop systems.
+                  A full stack developer with experience in building web
+                  applications, developing AI-powered automation tools, and
+                  assembling and optimizing desktop systems.
                 </p>
                 <div className="row">
                   <div className="col-lg-6">
@@ -155,15 +155,21 @@ function About() {
                   </div>
                 </div>
                 <p className="py-3">
-                  As a Full Stack Web Developer with a solid foundation in
-                  computer systems, I bring a diverse skill set that spans from
-                  web development, Internet of Things (IoT), ethical hacking and
-                  minor game development. With a BSIT degree and hands-on
-                  experience, I’ve honed my ability to develop robust and secure
-                  applications while remaining curious about advancements in
-                  both software and hardware. Currently available for
-                  opportunities, I am eager to continue expanding my expertise
-                  in technology and innovation.
+                  As a Full Stack Web Developer with a strong foundation in
+                  computer systems, I have experience in building web
+                  applications and working with technologies such as IoT,
+                  cybersecurity concepts, and basic game development. With a
+                  Bachelor's degree in Information Technology and practical
+                  development experience, I focus on creating reliable and
+                  maintainable software solutions. I also work on AI automation
+                  systems, developing chatbots that help streamline client
+                  workflows by executing actions directly from our platform.
+                  These systems integrate tools such as Neo4j for AI memory
+                  storage, Prism for AI integration within Laravel applications,
+                  and n8n for workflow automation. I am continuously improving
+                  my skills and remain open to opportunities where I can
+                  contribute while expanding my experience in modern
+                  technologies.
                 </p>
               </div>
             </div>
