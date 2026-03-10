@@ -19,6 +19,11 @@ const certificateSchema = new Schema({
 
     preview: {
         type: String,
+    },
+
+    pinned: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true }
 );

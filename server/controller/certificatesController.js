@@ -30,6 +30,15 @@ const postCertificate = async (req, res) => {
     }
 };
 
+const updateCertificate = async (req, res) => {
+    try {
+        const updateCertificate = await Certificate.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json(`${updateCertificate.event} Successfully Updated`)
+    } catch (error) {
+        console.log(error)
+    }
+};
+
 const deleteCertificate = async (req, res) => {
     try {
         const deleteCertificate = await Certificate.findByIdAndDelete(req.params.id);
@@ -40,4 +49,4 @@ const deleteCertificate = async (req, res) => {
 }
 
 
-export { getCertificates, postCertificate, deleteCertificate, uploadImages }
+export { getCertificates, postCertificate, updateCertificate, deleteCertificate, uploadImages }
