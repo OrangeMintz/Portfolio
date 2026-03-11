@@ -1,25 +1,29 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { onAuthStateChanged, User } from "firebase/auth";
+import { useEffect, useState, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import "./sidebar.css";
-import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
 function Sidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+
   const [activeHash, setActiveHash] = useState("#home");
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-  const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev);
-  };
+  const sidebarRef = useRef<HTMLElement | null>(null);
+  const toggleRef = useRef<HTMLElement | null>(null);
 
-  // Update active section when scrolling (Home page)
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
+
+  /* --------------------------------
+     Scroll section observer
+  -------------------------------- */
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -28,13 +32,53 @@ function Sidebar() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
+
     sections.forEach((s) => observer.observe(s));
+
     return () => sections.forEach((s) => observer.unobserve(s));
   }, []);
 
-  // Determine if current path is /
+  /* --------------------------------
+     Close sidebar when clicking outside
+  -------------------------------- */
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      if (
+        isSidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(target)
+      ) {
+        setSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSidebarOpen]);
+
+  /* --------------------------------
+     Firebase auth listener
+  -------------------------------- */
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  /* --------------------------------
+     Navigation helpers
+  -------------------------------- */
   const isHome = location.pathname === "/";
 
   const isActive = (idOrPath: string) => {
@@ -45,10 +89,13 @@ function Sidebar() {
   const handleNavToSection = (id: string) => {
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: id } });
+      setSidebarOpen(false);
       return;
     }
+
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
     setActiveHash(id);
+    setSidebarOpen(false);
   };
 
   const handleLogout = async () => {
@@ -62,24 +109,18 @@ function Sidebar() {
     }
   };
 
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   return (
     <>
+      {/* Mobile Toggle */}
       <i
+        ref={toggleRef}
         className="header-toggle d-xl-none bi bi-list"
         onClick={toggleSidebar}
       />
 
+      {/* Sidebar */}
       <header
+        ref={sidebarRef}
         id="header"
         className={`header dark-background d-flex flex-column ${
           isSidebarOpen ? "show-sidebar" : "hide-sidebar"
@@ -104,99 +145,103 @@ function Sidebar() {
           </h1>
         </Link>
 
+        {/* Social links */}
         <div className="social-links text-center">
-          <Link to="https://x.com/MintRange" className="twitter">
+          <Link to="https://x.com/MintRange">
             <i className="bi bi-twitter-x"></i>
           </Link>
-          <Link to="https://facebook.com/OrangeMintz" className="facebook">
+          <Link to="https://facebook.com/OrangeMintz">
             <i className="bi bi-facebook"></i>
           </Link>
-          <Link
-            to="https://www.instagram.com/OrangeMint57/"
-            className="instagram"
-          >
+          <Link to="https://www.instagram.com/OrangeMint57/">
             <i className="bi bi-instagram"></i>
           </Link>
-          <Link
-            to="https://discordapp.com/users/505809822239948806"
-            className="discord"
-          >
+          <Link to="https://discordapp.com/users/505809822239948806">
             <i className="bi bi-discord"></i>
           </Link>
-          <Link to="https://github.com/OrangeMintz" className="github ">
+          <Link to="https://github.com/OrangeMintz">
             <i className="bi bi-github"></i>
           </Link>
         </div>
 
+        {/* Navigation */}
         <nav id="navmenu" className="navmenu">
           <ul>
             <li>
               <a
-                className={isActive("#home") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#home") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#home")}
               >
                 <i className="bi bi-house navicon"></i> Home
               </a>
             </li>
+
             <li>
               <a
-                className={isActive("#about") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#about") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#about")}
               >
                 <i className="bi bi-person navicon"></i> About
               </a>
             </li>
+
             <li>
               <a
-                className={isActive("#skills") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#skills") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#skills")}
               >
                 <i className="bi bi-code-slash navicon"></i> Skills
               </a>
             </li>
+
             <li>
               <a
-                className={isActive("#resume") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#resume") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#resume")}
               >
                 <i className="bi bi-file-earmark-text navicon"></i> Resume
               </a>
             </li>
+
             <li>
               <a
-                className={isActive("#services") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#services") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#services")}
               >
                 <i className="bi bi-hdd-stack navicon"></i> Services
               </a>
             </li>
+
             <li>
               <a
-                className={isActive("#contact") ? "active" : ""}
+                className={`cursor-pointer ${isActive("#contact") ? "active" : ""}`}
                 onClick={() => handleNavToSection("#contact")}
               >
                 <i className="bi bi-envelope navicon"></i> Contacts
               </a>
             </li>
+
             <li>
               <a
                 href="/projects"
-                className={isActive("/projects") ? "active" : ""}
+                className={`cursor-pointer ${isActive("/projects") ? "active" : ""}`}
               >
                 <i className="bi bi-stack navicon"></i> Projects
               </a>
             </li>
+
             <li>
               <a
                 href="/certificates"
-                className={isActive("/certificates") ? "active" : ""}
+                className={`cursor-pointer ${isActive("/certificates") ? "active" : ""}`}
               >
-                <i className="fa-solid fa-certificate navicon text-xl mr-[9px]"></i>{" "}
+                <i className="fa-solid fa-certificate navicon text-xl mr-[9px]"></i>
                 Certificates
               </a>
             </li>
           </ul>
 
+          {/* Logged user */}
           {currentUser && (
             <ul className="mt-3 px-2">
               <li className="flex items-center justify-between text-sm text-gray-300">
@@ -206,6 +251,7 @@ function Sidebar() {
                     currentUser.displayName ||
                     currentUser.providerData[0]?.displayName}
                 </span>
+
                 <button
                   onClick={handleLogout}
                   className="text-red-400 hover:text-red-600 text-xs ml-2"
