@@ -123,7 +123,7 @@ function Resume() {
                   </h4>
 
                   <span className="inline-block bg-gray-100 px-3 py-1 text-sm font-semibold mb-2">
-                    October 2025 - Present
+                    August 2024 - March 2026
                   </span>
 
                   <p className="font-semibold">Software Developer</p>
